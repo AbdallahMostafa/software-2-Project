@@ -8,14 +8,7 @@ import javax.persistence.Id;
 public class Store {
     private String storeLocation,storeName;
     //storeType
-    @Id
-    public String getType() {
-        return type;
-    }
 
-    public void setType(String type) {
-        this.type = type;
-    }
 
     public Store(String storeLocation, String storeName, String type) {
         this.storeLocation = storeLocation;
@@ -36,7 +29,7 @@ public class Store {
     public void setStoreLocation(String storeLocation) {
         this.storeLocation = storeLocation;
     }
-
+    @Id
     public String getStoreName() {
         return storeName;
     }

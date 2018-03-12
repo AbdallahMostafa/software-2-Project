@@ -20,9 +20,9 @@ public class UserController {
     NormalUserRepo normalUserRepo;
 
     @GetMapping("/SignUp")
-    public String url(Model model,@ModelAttribute NormalUser normal)
+    public String url(Model model,@ModelAttribute NormalUser normalUser)
     {
-        model.addAttribute("normal",new NormalUser());
+        model.addAttribute("normalUser",new NormalUser());
         return "SignUp";
     }
     @PostMapping("/SignUp")

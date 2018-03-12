@@ -5,10 +5,17 @@ import javax.persistence.Id;
 
 @Entity
 public class Product {
-    private String productName, productCategory,productType;
+    private String productName, productCategory,productType,ID;
     private double productPrice;
-
     @Id
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String ID) {
+        this.ID = ID;
+    }
+
     public String getType() {
         return type;
     }
@@ -16,6 +23,7 @@ public class Product {
     public void setType(String type) {
         this.type = type;
     }
+
     public Product()
     {
         this.productCategory = "";
