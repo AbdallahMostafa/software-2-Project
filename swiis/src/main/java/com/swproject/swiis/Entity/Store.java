@@ -4,9 +4,10 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 
 @Entity
-
 public class Store {
-    private String storeLocation,storeName;
+    private String storeLocation,type;
+    @Id
+    private String storeName;
     //storeType
 
 
@@ -29,7 +30,7 @@ public class Store {
     public void setStoreLocation(String storeLocation) {
         this.storeLocation = storeLocation;
     }
-    @Id
+
     public String getStoreName() {
         return storeName;
     }
@@ -38,7 +39,11 @@ public class Store {
         this.storeName = storeName;
     }
 
-    private String type;
+       public String getType() {
+        return type;
+    }
 
-
+    public void setType(String type) {
+        this.type = type;
+    }
 }

@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class UserController {
@@ -19,14 +20,19 @@ public class UserController {
     @Autowired
     NormalUserRepo normalUserRepo;
 
+    @RequestMapping("/HomePage")
+    public String log() {
+        return "HomePage";
+    }
+    //-----------------------------SignUp---------------------------------
     @GetMapping("/SignUp")
-    public String url(Model model,@ModelAttribute NormalUser normalUser)
+    public String singUp(Model model,@ModelAttribute NormalUser normalUser)
     {
         model.addAttribute("normalUser",new NormalUser());
         return "SignUp";
     }
     @PostMapping("/SignUp")
-    public String get (Model model,@ModelAttribute NormalUser normalUser)
+    public String checkSignUp (Model model,@ModelAttribute NormalUser normalUser)
     {
         if(!normalUserRepo.existsById(normalUser.getUserName()) || !storeOwnerRepo.existsById(normalUser.getUserName()))
         {
@@ -41,6 +47,28 @@ public class UserController {
                storeOwnerRepo.save(storeOwner);
            }
            return "SignUp";
+        }else
+        {
+            return "ErrorLogin";
+        }
+    }
+    //------------------------------Login---------------------------------
+    @GetMapping("/Login")
+    public String login(Model model, @ModelAttribute NormalUser normalUser)
+    {
+        model.addAttribute("normal",new NormalUser());
+        return "Login";
+    }
+    @PostMapping("/Login")
+    public String checkLogin(Model model,@ModelAttribute NormalUser normalUser)
+    {
+        if(normalUserRepo.existsById(normalUser.getUserName()))
+        {
+            return "Welcome";
+        }
+        if(storeOwnerRepo.existsById(normalUser.getUserName()))
+        {
+            return "Welcome";
         }else
         {
             return "ErrorLogin";

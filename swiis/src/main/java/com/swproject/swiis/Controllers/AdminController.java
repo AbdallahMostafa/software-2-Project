@@ -22,8 +22,10 @@ public class AdminController {
     @PostMapping("/AdminLogin")
     public String get (Model model,@ModelAttribute Admin admin)
     {
+        System.out.print(adminRepo.existsById(admin.getUserName()));
         if(adminRepo.existsById(admin.getUserName()))
         {
+
             return "Welcome";
         }
         else

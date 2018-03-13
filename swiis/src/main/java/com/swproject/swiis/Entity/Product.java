@@ -2,14 +2,27 @@ package com.swproject.swiis.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Product {
-    private String productName, productCategory,productType,ID;
-    private double productPrice;
+    private String productName, productCategory,productType;
     @Id
+    private String ID;
+    private double productPrice;
+    @ManyToOne
+    Brand brand;
+
     public String getID() {
         return ID;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 
     public void setID(String ID) {
@@ -31,14 +44,16 @@ public class Product {
         this.productPrice = 0.0;
         this.productType = "";
         this.type = "";
+        this.brand = new Brand();
     }
-    public Product(String productName, String productCategory, String productType, double productPrice ,String type) {
+    public Product(String productName, String productCategory, String productType, double productPrice , String type, Brand brand) {
         super();
         this.productName = productName;
         this.productCategory = productCategory;
         this.productType = productType;
         this.productPrice = productPrice;
         this.type = type;
+        this.brand = brand;
     }
     //brandName
 

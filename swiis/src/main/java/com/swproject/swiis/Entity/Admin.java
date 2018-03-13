@@ -6,31 +6,23 @@ import javax.persistence.Id;
 @Entity
 public class Admin {
 
-    private String name,userName,passWord,email;
-
+    private String name,passWord,email;
     @Id
-    public String getType() {
-        return type;
-    }
+    private String userName;
 
-    public void setType(String type) {
-        this.type = type;
-    }
     public Admin()
     {
         this.name = "";
         this.passWord = "";
         this.userName = "";
         this.email = "";
-        this.type = "";
     }
-    public Admin(String name, String userName, String passWord, String email,String type) {
+    public Admin(String name, String userName, String passWord, String email ){
         super();
         this.name = name;
         this.userName = userName;
         this.passWord = passWord;
         this.email = email;
-        this.type = type;
     }
 
     public String getName() {
@@ -64,8 +56,6 @@ public class Admin {
     public void setEmail(String email) {
         this.email = email;
     }
-
-    private String type;
 
 
 }

@@ -5,7 +5,9 @@ import javax.persistence.Id;
 
 @Entity
 public class NormalUser {
-    private String name,userName,passWord,email,type;
+    private String name ,passWord,email,type;
+    @Id
+    private String userName;
 
     public String getType() {
         return type;
@@ -39,7 +41,6 @@ public class NormalUser {
     public void setName(String name) {
         this.name = name;
     }
-    @Id
     public String getUserName() {
         return userName;
     }

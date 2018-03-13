@@ -6,7 +6,9 @@ import javax.persistence.Id;
 @Entity
 public class StoreOwner {
 
-    private String name,userName,passWord,email;
+    private String name,passWord,email;
+    @Id
+    private String userName;
 
     public String getType() {
         return type;
@@ -40,7 +42,7 @@ public class StoreOwner {
     public void setName(String name) {
         this.name = name;
     }
-    @Id
+
     public String getUserName() {
         return userName;
     }
