@@ -17,14 +17,19 @@ public class StoreOwner {
     @OneToMany(targetEntity = Store.class, cascade = CascadeType.ALL, mappedBy = "storeOwner")
     private Set<Store> stores;
 
-    public StoreOwner(String name, String userName, String passWord, String email,String type,Set<Store> stores) {
+    @OneToMany(targetEntity = SuggestedStores.class, cascade = CascadeType.ALL, mappedBy = "storeOwner")
+    private Set<SuggestedStores> suggestedStores;
+
+    public StoreOwner(String name, String userName, String passWord, String email,String type)
+    {
         super();
         this.name = name;
         this.userName = userName;
         this.passWord = passWord;
         this.email = email;
         this.type = type;
-        this.stores = stores;
+        this.suggestedStores = new HashSet<SuggestedStores>();
+        this.stores = new HashSet<Store>();
     }
 
     public StoreOwner() {
@@ -34,6 +39,7 @@ public class StoreOwner {
         this.userName ="";
         this.type = "";
         this.stores = new HashSet<Store>();
+        this.suggestedStores = new HashSet<SuggestedStores>();
     }
 
     public void setName(String name) {
@@ -83,4 +89,11 @@ public class StoreOwner {
         this.stores = stores;
     }
 
+    public Set<SuggestedStores> getSuggestedStores() {
+        return suggestedStores;
+    }
+
+    public void setSuggestedStores(Set<SuggestedStores> suggestedStores) {
+        this.suggestedStores = suggestedStores;
+    }
 }

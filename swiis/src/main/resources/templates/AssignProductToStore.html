@@ -5,9 +5,15 @@
     <title>Assign Brand to Product</title>
 </head>
 <body>
-<select >
-<option th:each="brand: ${brands}" th:value="${brand.name}" th:text="${brand.name}"></option>
-</select>
+    <div >
+        <form method="post" th:action="@{/AssignProductToStore}" th:object="${}" >
+            <select th:field="${brand}">
+                <option value="">Select Brand</option>
+                <option th:each="brands : ${brand}" th:value="${brands.getName()}" th:text="${brands.getName()}"></option>
+            </select>
+            <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+        </form>
+    </div>
 </body>
 </html>
 

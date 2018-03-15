@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Assign Brand to Product</title>
+</head>
+<body>
+<div >
+    <form method="post" th:action="@{/AcceptStore}" th:object="${suggestedStores}">
+        <select th:field="${stores}">
+            <option value="">Select Stores</option>
+            <option th:each="store : ${stores}" th:value="${store.getStoreName()}" th:text="${store.getStoreName()}"></option>
+        </select>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+    </form>
+</div>
+</body>
+</html>
