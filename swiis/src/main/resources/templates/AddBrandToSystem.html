@@ -2,13 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Insert title here</title>
+    <title>Sign Up</title>
 </head>
 <body>
-
-<form method="post" th:action="@{/AdminLogin}" th:object="${admin}">
-    <p>UserName: <input type="text" th:field="*{userName}"></p>
-    <p>Password: <input type="password" th:field="*{passWord}" ></p>
+<form method="post" th:action="@{/AddBrandToSystem}" th:object="${brand}">
+    <p>Brand Name: <input type="text" th:field="*{name}"></p>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" />
 </form>
 </body>
