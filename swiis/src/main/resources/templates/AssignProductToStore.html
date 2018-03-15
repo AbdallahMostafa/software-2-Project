@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Assign Brand to Product</title>
+</head>
+<body>
+<select >
+<option th:each="brand: ${brands}" th:value="${brand.name}" th:text="${brand.name}"></option>
+</select>
+</body>
+</html>
+

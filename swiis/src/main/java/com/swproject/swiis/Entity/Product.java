@@ -6,7 +6,7 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Product {
-    private String productName, productCategory,productType;
+    private String productName, productCategory,productType,type;
     @Id
     private String ID;
     private double productPrice;
@@ -82,7 +82,7 @@ public class Product {
         this.productPrice = productPrice;
     }
 
-    private String type;
+
 
 
 }
