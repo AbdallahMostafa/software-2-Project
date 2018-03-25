@@ -12,7 +12,7 @@ public class Admin {
 
     public Admin()
     {
-        this.name = "";
+        this.name = "" ;
         this.passWord = "";
         this.userName = "";
         this.email = "";
