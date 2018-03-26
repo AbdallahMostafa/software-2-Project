@@ -66,9 +66,9 @@ public class UserController {
         {
             return "Welcome";
         }
-        if(storeOwnerRepo.existsById(normalUser.getUserName()))
+        else if(storeOwnerRepo.existsById(normalUser.getUserName()))
         {
-            return "Welcome";
+            return "WelcomeOwner";
         }else
         {
             return "ErrorLogin";
