@@ -50,7 +50,7 @@ public class AdminController {
         if(adminRepo.existsById(admin.getUserName()))
         {
 
-            return "Welcome";
+            return "WelcomeAdmin";
         }
         else
         {
