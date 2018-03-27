@@ -61,15 +61,16 @@ public class AdminController {
     @GetMapping("/AcceptStore")
     public String showStores(Model model)
     {
-        Iterable<SuggestedStores> suggestedStores =suggestedStoresRepo.findAll();
+        Iterable<SuggestedStores> suggestedStores = suggestedStoresRepo.findAll();
         List<SuggestedStores> suggestedStoresList = generateList(suggestedStores);
         model.addAttribute("stores", suggestedStoresList);
         return "AcceptStore";
     }
+    
     @PostMapping("/AcceptStore")
     public String AddStore(Model model,@ModelAttribute SuggestedStores suggestedStores)
     {
-           if(suggestedStoresRepo.existsById("7amda"))
+           if(!suggestedStoresRepo.existsById(suggestedStores.getStoreName()))
            {
                Store store = new Store(suggestedStores.getStoreLocation(),suggestedStores.getStoreName(),suggestedStores.getType(),suggestedStores.getStoreOwner());
                storeRepo.save(store);
@@ -77,6 +78,6 @@ public class AdminController {
                return "AcceptStore";
            }
            else
-               return "ErrorLogin";
+               return "StoreError";
     }
 }
