@@ -24,7 +24,6 @@ public class SuggestedStores {
         this.storeLocation = storeLocation;
         this.storeName = storeName;
         this.type = type;
-
     }
 
     public SuggestedStores() {

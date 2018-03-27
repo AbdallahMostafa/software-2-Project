@@ -1,8 +1,10 @@
 package com.swproject.swiis.Controllers;
 
 import com.swproject.swiis.Entity.Brand;
+import com.swproject.swiis.Entity.SuggestedStores;
 import com.swproject.swiis.Repositories.BrandRepo;
 import com.swproject.swiis.Repositories.ProductRepo;
+import com.swproject.swiis.Repositories.SuggestedStoresRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +22,10 @@ public class StoreOwnerController {
 
     @Autowired
     ProductRepo productRepo;
+
+    @Autowired
+    SuggestedStoresRepo suggestedStoresRepo;
+
     private List<Brand> generateList(Iterable<Brand> iterable)
     {
         List<Brand> brandList = new ArrayList<Brand>();
@@ -42,4 +48,28 @@ public class StoreOwnerController {
     {
         return "AssignProductToStore";
     }
+
+
+    //---------------------- suggest store -----------------------
+
+    @GetMapping("/SuggestStore")
+    public String create(Model model, @ModelAttribute SuggestedStores suggested) {
+        model.addAttribute("suggested", new SuggestedStores());
+        return "SuggestStore";
+    }
+    @PostMapping("/SuggestStore")
+    public String Add(Model model, @ModelAttribute SuggestedStores suggested)
+    {
+
+        if(!suggestedStoresRepo.existsById(suggested.getStoreName()))
+        {
+            suggestedStoresRepo.save(suggested);
+            return "SuggestStore";
+        }
+        else
+        {
+            return "StoreError";
+        }
+    }
+
 }
