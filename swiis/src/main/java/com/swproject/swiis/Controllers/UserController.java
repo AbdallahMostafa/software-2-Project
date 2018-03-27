@@ -26,10 +26,6 @@ public class UserController {
     public String log() {
         return "HomePage";
     }
-    /*public boolean getCustomer()
-    {
-
-    }*/
     //-----------------------------SignUp---------------------------------
     @GetMapping("/SignUp")
     public String singUp(Model model,@ModelAttribute NormalUser normalUser)
@@ -52,7 +48,7 @@ public class UserController {
                storeOwner = new StoreOwner(normalUser.getName() , normalUser.getName(),normalUser.getPassWord(),normalUser.getEmail(),normalUser.getType());
                storeOwnerRepo.save(storeOwner);
            }
-           return "SignUp";
+           return "Login";
         }else
         {
             return "ErrorLogin";
@@ -74,7 +70,8 @@ public class UserController {
             if(tempUser.getUserName().equals(normalUser.getUserName()) && tempUser.getPassWord().equals(normalUser.getPassWord()))
             {
                 session.getSession().setAttribute("customer", tempUser);
-                System.out.println(session.getSession().getAttribute("customer"));
+                NormalUser temp = (NormalUser) session.getSession().getAttribute("customer");
+                //System.out.println((NormalUser)session.getSession().getAttribute("customer"));
                 return "Welcome";
             }
             else
@@ -82,18 +79,16 @@ public class UserController {
                 return "ErrorLogin";
             }
         }
+        //System.out.println(storeOwnerRepo.existsById(normalUser.getUserName()));
         else if(storeOwnerRepo.existsById(normalUser.getUserName()))
         {
             StoreOwner tempStoreOwner = storeOwnerRepo.findById(normalUser.getUserName()).get();
-            if(tempStoreOwner.getUserName().equals(normalUser.getName()) && tempStoreOwner.getPassWord().equals(normalUser.getPassWord())) {
+            System.out.println(tempStoreOwner.getUserName() + " " + tempStoreOwner.getPassWord() + " " + normalUser.getUserName() + " "+ normalUser.getPassWord());
+            if(tempStoreOwner.getUserName().equals(normalUser.getUserName()) && tempStoreOwner.getPassWord().equals(normalUser.getPassWord())) {
                 session.getSession().setAttribute("storeOwner", tempStoreOwner);
-                return "Welcome";
+                return "WelcomeOwner";
             }
-            return "WelcomeOwner";
-        }else
-        {
-            return "ErrorLogin";
         }
+        return "ErrorLogin";
     }
-
 }
