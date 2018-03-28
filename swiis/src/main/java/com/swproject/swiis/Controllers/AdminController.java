@@ -63,10 +63,10 @@ public class AdminController {
     {
         Iterable<SuggestedStores> suggestedStores = suggestedStoresRepo.findAll();
         List<SuggestedStores> suggestedStoresList = generateList(suggestedStores);
-        model.addAttribute("stores", suggestedStoresList);
+        model.addAttribute("storeslist", suggestedStoresList);
+        model.addAttribute("store",new Store());
         return "AcceptStore";
     }
-    
     @PostMapping("/AcceptStore")
     public String AddStore(Model model,@ModelAttribute SuggestedStores suggestedStores)
     {

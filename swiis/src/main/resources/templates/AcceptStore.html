@@ -2,17 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Assign Brand to Product</title>
+    <title>CHECK Suggested Stores</title>
 </head>
 <body>
-<div >
-    <form method="post" th:action="@{/AcceptStore}" th:object="${suggestedStores}">
-        <select th:field="${stores}">
-            <option value="">Select Stores</option>
-            <option th:each="store : ${stores}" th:value="${store.getStoreName()}" th:text="${store.getStoreName()}"></option>
-        </select>
-        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" />
-    </form>
-</div>
+
+
+<table border="1px">
+    <tr>
+        <td>Store Name</td>
+        <td>Store Location</td>
+        <td>Store Type</td>
+    </tr>
+    <tr th:each="store:${storeslist}">
+        <td th:text=${store.}></td>
+        <!--<td th:text=${store.getStoreLocation()}></td>
+        <td th:text=${store.getStoreType()}></td>-->
+    </tr>
+
+</table>
+
+<form method ="post" th:action="@{/AcceptStore}" th:object="${store}">
+    Store Name : <input type ="text" th:field="*{storeName}">
+    <br>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" />
+    </p>
+</form>
+
 </body>
 </html>
