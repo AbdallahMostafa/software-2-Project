@@ -14,18 +14,15 @@
         <td>Store Type</td>
     </tr>
     <tr th:each="store:${storeslist}">
-        <td th:text=${store.}></td>
-        <!--<td th:text=${store.getStoreLocation()}></td>
-        <td th:text=${store.getStoreType()}></td>-->
+        <td th:text="${store.getStoreName()}"></td>
+        <td th:text="${store.getStoreLocation()}"></td>
+        <td th:text="${store.getType()}"></td>
     </tr>
-
 </table>
-
+<br>
 <form method ="post" th:action="@{/AcceptStore}" th:object="${store}">
-    Store Name : <input type ="text" th:field="*{storeName}">
-    <br>
-    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" />
-    </p>
+    Store Name : <input type ="text" th:field="*{storeName}"><br>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset"/></p>
 </form>
 
 </body>

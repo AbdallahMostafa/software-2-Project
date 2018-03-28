@@ -27,14 +27,14 @@ public class AdminController {
     @Autowired
     StoreRepo storeRepo;
 
-    private List<SuggestedStores> generateList(Iterable<SuggestedStores> iterable)
+    public ArrayList<SuggestedStores> generateList(Iterable<SuggestedStores> iterable)
     {
-        List<SuggestedStores> brandList = new ArrayList<SuggestedStores>();
+        ArrayList<SuggestedStores> storeList = new ArrayList<SuggestedStores>();
         for(SuggestedStores suggestedStores : iterable)
         {
-            brandList.add(suggestedStores);
+            storeList.add(suggestedStores);
         }
-        return brandList;
+        return storeList;
     }
 
     //-----------------------Login---------------------------
@@ -62,15 +62,15 @@ public class AdminController {
     public String showStores(Model model)
     {
         Iterable<SuggestedStores> suggestedStores = suggestedStoresRepo.findAll();
-        List<SuggestedStores> suggestedStoresList = generateList(suggestedStores);
+        ArrayList<SuggestedStores> suggestedStoresList = generateList(suggestedStores);
         model.addAttribute("storeslist", suggestedStoresList);
-        model.addAttribute("store",new Store());
+        model.addAttribute("store",new SuggestedStores());
         return "AcceptStore";
     }
     @PostMapping("/AcceptStore")
     public String AddStore(Model model,@ModelAttribute SuggestedStores suggestedStores)
     {
-           if(!suggestedStoresRepo.existsById(suggestedStores.getStoreName()))
+           if(suggestedStoresRepo.existsById(suggestedStores.getStoreName()))
            {
                Store store = new Store(suggestedStores.getStoreLocation(),suggestedStores.getStoreName(),suggestedStores.getType(),suggestedStores.getStoreOwner());
                storeRepo.save(store);
