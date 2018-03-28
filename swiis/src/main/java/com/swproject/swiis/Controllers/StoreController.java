@@ -34,6 +34,27 @@ public class StoreController {
             return "StoreError";
         }
     }
+    @GetMapping("/StoreProducts")
+    public String showget(Model model, @ModelAttribute Store store) {
+        model.addAttribute("store", new Store());
+        return "StoreProducts";
+    }
+
+    @PostMapping("/StoreProducts")
+    public String showpost(Model model, @ModelAttribute Store store)
+    {
+        store.setStoreName(store.getStoreName().toLowerCase());
+        if(!storeRepo.existsById(store.getStoreName()))
+        {
+            storeRepo.save(store);
+            return "AddStoreToSystem";
+        }
+        else
+        {
+            return "StoreError";
+        }
+    }
+
 
 
 }
