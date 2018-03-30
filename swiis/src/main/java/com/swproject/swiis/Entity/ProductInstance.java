@@ -1,9 +1,6 @@
 package com.swproject.swiis.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class ProductInstance {
@@ -12,6 +9,7 @@ public class ProductInstance {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     double price;
+    @ManyToOne
     private Store store;
 
     public ProductInstance(){};
