@@ -1,12 +1,14 @@
 package com.swproject.swiis.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Product {
     private String productName, productCategory,productType,type;
+    /*@Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;
+    */
     @Id
     private String ID;
     private double productPrice;
