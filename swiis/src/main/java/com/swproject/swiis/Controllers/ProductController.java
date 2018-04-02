@@ -18,7 +18,7 @@ public class ProductController {
     @Autowired
     ProductRepo productRepo;
     // Hash Function
-    private String hashFunction(String passwordToHash, String   salt){
+/*    private String hashFunction(String passwordToHash, String   salt){
         String generatedPassword = null;
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");
@@ -34,7 +34,7 @@ public class ProductController {
             e.printStackTrace();
         }
         return generatedPassword;
-    }
+    }*/
     @GetMapping("/AddProductToSystem")
     public String create(Model model, @ModelAttribute Product product) {
         model.addAttribute("product", new Product());
@@ -45,8 +45,8 @@ public class ProductController {
     public String Add(Model model, @ModelAttribute Product product)
     {
         product.setProductName(product.getProductName().toLowerCase());
-        String hash = hashFunction(product.getProductName(), "abc");
-        product.setID(hash);
+        //String hash = hashFunction(product.getProductName(), "abc");
+        //product.setID(hash);
         if(!productRepo.existsById(product.getID()))
         {
             productRepo.save(product);

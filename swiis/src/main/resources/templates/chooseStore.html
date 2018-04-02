@@ -18,7 +18,7 @@
 </table>
 <br>
 
-<form method ="post" th:action="@{/BuyProduct}" th:object="${store}">
+<form method ="post" th:action="@{/ShowProduct}" th:object="${store}">
     Store Name : <input type ="text" th:field="*{storeName}"><br>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset"/></p>
 </form>

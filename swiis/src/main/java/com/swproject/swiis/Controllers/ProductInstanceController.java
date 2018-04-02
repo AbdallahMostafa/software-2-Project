@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import java.util.ArrayList;
 
 public class ProductInstanceController {
+/*
     @Autowired
     StoreRepo storeRepo;
 
@@ -38,5 +39,6 @@ public class ProductInstanceController {
         model.addAttribute("store",new Store());
         return "chooseStore";
     }
+*/
 
 }

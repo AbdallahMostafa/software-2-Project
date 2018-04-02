@@ -2,7 +2,6 @@ package com.swproject.swiis.Controllers;
 
 import com.swproject.swiis.Entity.ProductInstance;
 import com.swproject.swiis.Entity.Store;
-import com.swproject.swiis.Entity.SuggestedStores;
 import com.swproject.swiis.Repositories.ProductInstanceRepo;
 import com.swproject.swiis.Repositories.ProductRepo;
 import com.swproject.swiis.Repositories.StoreRepo;
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 @Controller
 public class NormalUserController {
@@ -50,13 +50,11 @@ public class NormalUserController {
     {
         if(storeRepo.existsById(store.getStoreName()))
         {
-            ProductInstance productInstance = new ProductInstance();
-            productInstance.setStore(store);
-            model.addAttribute("productInstance",productInstance);
+            Optional<Store> tempStore = storeRepo.findById(store.getStoreName());
+            model.addAttribute("products" , tempStore.get().getProdcutInstance());
             return "ShowProduct";
         }
         else
             return "StoreError";
     }
-
 }
