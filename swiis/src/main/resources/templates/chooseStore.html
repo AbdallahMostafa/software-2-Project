@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Choose Store</title>
+</head>
+<body>
+
+
+
+<table border="1px">
+    <tr>
+        <td>Store Name</td>
+    </tr>
+    <tr th:each="store:${storeslist}">
+        <td th:text="${store.getStoreName()}"></td>
+    </tr>
+</table>
+<br>
+
+<form method ="post" th:action="@{/ShowProduct}" th:object="${store}">
+    Store Name : <input type ="text" th:field="*{storeName}"><br>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset"/></p>
+</form>
+
+</body>
+</html>

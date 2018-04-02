@@ -34,6 +34,7 @@ public class StoreController {
             return "StoreError";
         }
     }
+/*
     @GetMapping("/StoreProducts")
     public String showget(Model model, @ModelAttribute Store store) {
         model.addAttribute("store", new Store());
@@ -54,7 +55,6 @@ public class StoreController {
             return "StoreError";
         }
     }
-
-
+*/
 
 }

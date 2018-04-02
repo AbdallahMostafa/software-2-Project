@@ -75,7 +75,7 @@ public class AdminController {
                Store store = new Store(suggestedStores.getStoreLocation(),suggestedStores.getStoreName(),suggestedStores.getType(),suggestedStores.getStoreOwner());
                storeRepo.save(store);
                suggestedStoresRepo.delete(suggestedStores);
-               return "AcceptStore";
+               return "WelcomeAdmin";
            }
            else
                return "StoreError";

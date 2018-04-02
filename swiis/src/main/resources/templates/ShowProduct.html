@@ -1,0 +1,36 @@
+<!--
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Choose Product</title>
+</head>
+<body>
+
+<table border="1px">
+    <tr>
+        <td>Product Name</td>
+        <td>Product ID</td>
+        <td>Product Category</td>
+        <td>Product Type</td>
+        <td>Product Price</td>
+        <td>Product brand</td>
+    </tr>
+    <tr th:each="product:${productslist}">
+        <td th:text="${product.getStoreName()}"></td>
+        <td th:text="${store.getStoreLocation()}"></td>
+        <td th:text="${store.getType()}"></td>
+        <td th:text="${store.getStoreLocation()}"></td>
+        <td th:text="${store.getType()}"></td>
+        <td th:text="${store.getStoreLocation()}"></td>
+    </tr>
+</table>
+<br>
+
+<form method ="post" th:action="@{/BuyProduct}" th:object="${product}">
+    Product ID : <input type ="text" th:field="*{ID}"><br>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset"/></p>
+</form>
+
+</body>
+</html>-->
