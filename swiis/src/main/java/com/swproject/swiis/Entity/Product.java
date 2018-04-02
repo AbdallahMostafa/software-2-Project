@@ -10,13 +10,14 @@ public class Product {
     private long id;
     */
     @Id
-    private String ID;
-    private double productPrice;
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private long id;
+    private double productPriceMax,productPriceMin;
     @ManyToOne
     Brand brand;
 
-    public String getID() {
-        return ID;
+    public long getID() {
+        return id;
     }
 
     public Brand getBrand() {
@@ -25,10 +26,6 @@ public class Product {
 
     public void setBrand(Brand brand) {
         this.brand = brand;
-    }
-
-    public void setID(String ID) {
-        this.ID = ID;
     }
 
     public String getType() {
@@ -43,17 +40,18 @@ public class Product {
     {
         this.productCategory = "";
         this.productName = "";
-        this.productPrice = 0.0;
+        this.productPriceMin = 0.0;
         this.productType = "";
         this.type = "";
         this.brand = new Brand();
     }
-    public Product(String productName, String productCategory, String productType, double productPrice , String type, Brand brand) {
+    public Product(String productName, String productCategory, String productType, double productPriceMin,double productPriceMax , String type, Brand brand) {
         super();
         this.productName = productName;
         this.productCategory = productCategory;
         this.productType = productType;
-        this.productPrice = productPrice;
+        this.productPriceMin = productPriceMin;
+        this.productPriceMax= productPriceMax;
         this.type = type;
         this.brand = brand;
     }
@@ -77,11 +75,18 @@ public class Product {
     public void setProductType(String productType) {
         this.productType = productType;
     }
-    public double getProductPrice() {
-        return productPrice;
+    public double getProductPriceMax() {
+        return productPriceMax;
     }
-    public void setProductPrice(double productPrice) {
-        this.productPrice = productPrice;
+    public double getProductPriceMin() {
+        return productPriceMin;
+    }
+
+    public void setProductPriceMax(double productPrice) {
+        this.productPriceMax = productPrice;
+    }
+    public void setProductPriceMin(double productPrice) {
+        this.productPriceMin = productPrice;
     }
 
 

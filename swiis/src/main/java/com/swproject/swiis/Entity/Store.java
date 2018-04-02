@@ -3,6 +3,7 @@ package com.swproject.swiis.Entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Store {
@@ -13,7 +14,9 @@ public class Store {
     //storeType
     @ManyToOne
     private StoreOwner storeOwner;
-
+    @OneToMany
+    private ProductInstance productInstance;
+    
     public Store(String storeLocation, String storeName, String type,StoreOwner storeOwner) {
         this.storeLocation = storeLocation;
         this.storeName = storeName;
