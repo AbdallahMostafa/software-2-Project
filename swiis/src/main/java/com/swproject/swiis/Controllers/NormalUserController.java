@@ -17,15 +17,13 @@ import java.util.Optional;
 
 @Controller
 public class NormalUserController {
-
     @Autowired
     StoreRepo storeRepo;
-
     @Autowired
     ProductRepo productRepo;
-
     @Autowired
     ProductInstanceRepo productInstanceRepo;
+
     private ArrayList<Store> generateList(Iterable<Store> iterable)
     {
         ArrayList<Store> storeList = new ArrayList<Store>();
@@ -51,7 +49,7 @@ public class NormalUserController {
         if(storeRepo.existsById(store.getStoreName()))
         {
             Optional<Store> tempStore = storeRepo.findById(store.getStoreName());
-            model.addAttribute("products" , tempStore.get().getProdcutInstance());
+            model.addAttribute("productlist" , tempStore.get().getProdcutInstance());
             return "ShowProduct";
         }
         else

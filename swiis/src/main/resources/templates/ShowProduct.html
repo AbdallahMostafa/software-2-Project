@@ -1,4 +1,3 @@
-<!--
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
@@ -16,21 +15,23 @@
         <td>Product Price</td>
         <td>Product brand</td>
     </tr>
-    <tr th:each="product:${productslist}">
-        <td th:text="${product.getStoreName()}"></td>
-        <td th:text="${store.getStoreLocation()}"></td>
-        <td th:text="${store.getType()}"></td>
-        <td th:text="${store.getStoreLocation()}"></td>
-        <td th:text="${store.getType()}"></td>
-        <td th:text="${store.getStoreLocation()}"></td>
+    <tr th:each="product:${productlist}">
+        <td th:text="${product.getProduct().getProductName()}"></td>
+        <td th:text="${product.getProduct().getID()}"></td>
+        <td th:text="${product.getProduct().getProductCategory()}"></td>
+        <td th:text="${product.getProduct().getType()}"></td>
+        <td th:text="${product.getProduct().getProductPriceMin()}"></td>
+        <td th:text="${product.getProduct().getProductPriceMax()}"></td>
+        <td th:text="${product.getProduct().getBrand().getName()}"></td>
     </tr>
 </table>
 <br>
 
+<!--
 <form method ="post" th:action="@{/BuyProduct}" th:object="${product}">
     Product ID : <input type ="text" th:field="*{ID}"><br>
     <p><input type="submit" value="Submit" /> <input type="reset" value="Reset"/></p>
 </form>
+-->
 
 </body>
-</html>-->
