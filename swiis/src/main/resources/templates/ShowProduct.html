@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Choose Product</title>
+</head>
+<body>
+
+<table border="1px">
+    <tr>
+        <td>Product Name</td>
+        <td>Product ID</td>
+        <td>Product Category</td>
+        <td>Product Type</td>
+        <td>Product Price</td>
+        <td>Product brand</td>
+    </tr>
+    <tr th:each="product:${productlist}">
+        <td th:text="${product.getProduct().getProductName()}"></td>
+        <td th:text="${product.getProduct().getID()}"></td>
+        <td th:text="${product.getProduct().getProductCategory()}"></td>
+        <td th:text="${product.getProduct().getType()}"></td>
+        <td th:text="${product.getProduct().getProductPriceMin()}"></td>
+        <td th:text="${product.getProduct().getProductPriceMax()}"></td>
+        <td th:text="${product.getProduct().getBrand().getName()}"></td>
+    </tr>
+</table>
+<br>
+
+<!--
+<form method ="post" th:action="@{/BuyProduct}" th:object="${product}">
+    Product ID : <input type ="text" th:field="*{ID}"><br>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset"/></p>
+</form>
+-->
+
+</body>

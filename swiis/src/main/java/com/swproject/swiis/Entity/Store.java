@@ -1,9 +1,7 @@
 package com.swproject.swiis.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Store {
@@ -11,17 +9,18 @@ public class Store {
     @Id
     private String storeName;
 
-    //storeType
     @ManyToOne
     private StoreOwner storeOwner;
-    @OneToMany
-    private ProductInstance productInstance;
+
+    @OneToMany(targetEntity = Store.class, cascade = CascadeType.ALL, mappedBy = "store")
+    private Set<ProductInstance> productInstance;
     
     public Store(String storeLocation, String storeName, String type,StoreOwner storeOwner) {
         this.storeLocation = storeLocation;
         this.storeName = storeName;
         this.type = type;
         this.storeOwner = storeOwner;
+        productInstance = null;
     }
 
     public Store() {
@@ -29,7 +28,14 @@ public class Store {
         this.storeName = "";
         this.type = "";
         this.storeOwner = new StoreOwner();
+        this.productInstance = null;
     }
+
+    public void setProductInstance(ProductInstance productInstance) {
+        this.productInstance.add(productInstance);
+    }
+
+    public Set<ProductInstance> getProdcutInstance() {return productInstance;}
 
     public String getStoreLocation() {
         return storeLocation;
