@@ -12,7 +12,7 @@ public class Store {
     @ManyToOne
     private StoreOwner storeOwner;
 
-    @OneToMany(targetEntity = Store.class, cascade = CascadeType.ALL, mappedBy = "store")
+    @OneToMany(targetEntity = ProductInstance.class, cascade = CascadeType.ALL, mappedBy = "store")
     private Set<ProductInstance> productInstance;
     
     public Store(String storeLocation, String storeName, String type,StoreOwner storeOwner) {
