@@ -6,10 +6,6 @@ import java.util.Set;
 @Entity
 public class Product {
     private String productName, productCategory,productType,type;
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
-    */
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
