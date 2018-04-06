@@ -6,6 +6,7 @@ import com.swproject.swiis.Entity.SuggestedStores;
 import com.swproject.swiis.Repositories.BrandRepo;
 import com.swproject.swiis.Repositories.ProductRepo;
 import com.swproject.swiis.Repositories.SuggestedStoresRepo;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
