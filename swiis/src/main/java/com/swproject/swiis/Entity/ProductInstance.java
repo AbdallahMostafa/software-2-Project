@@ -4,14 +4,15 @@ import javax.persistence.*;
 
 @Entity
 public class ProductInstance {
-    private Product product;
+
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
     double price;
     @ManyToOne
+    private Product product;
+    @ManyToOne
     private Store store;
-
     public ProductInstance(){};
     public void setProduct(Product product) {
         this.product = product;

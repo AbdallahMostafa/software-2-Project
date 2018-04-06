@@ -1,6 +1,7 @@
 package com.swproject.swiis.Entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Product {
@@ -15,7 +16,8 @@ public class Product {
     private double productPriceMax,productPriceMin;
     @ManyToOne
     Brand brand;
-
+    @OneToMany(targetEntity = ProductInstance.class, cascade = CascadeType.ALL, mappedBy = "product")
+    private Set<ProductInstance> productInstance;
     public long getID() {
         return id;
     }
