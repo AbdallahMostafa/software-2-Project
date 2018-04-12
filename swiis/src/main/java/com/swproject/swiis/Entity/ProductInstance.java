@@ -13,6 +13,22 @@ public class ProductInstance {
     private Product product;
     @ManyToOne
     private Store store;
+    private int counter;
+
+    public ProductInstance(double price, Product product, Store store, int counter) {
+        this.price = price;
+        this.product = product;
+        this.store = store;
+        this.counter = counter;
+    }
+    public int getCounter() {
+        return counter;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
+    }
+
     public ProductInstance(){};
     public void setProduct(Product product) {
         this.product = product;

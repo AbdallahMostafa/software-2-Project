@@ -14,6 +14,7 @@ public class StoreController {
 
     @Autowired
     StoreRepo storeRepo;
+
     @GetMapping("/AddStoreToSystem")
     public String create(Model model, @ModelAttribute Store store) {
         model.addAttribute("store", new Store());

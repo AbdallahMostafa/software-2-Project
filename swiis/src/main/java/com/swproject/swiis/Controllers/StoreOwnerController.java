@@ -8,17 +8,15 @@ import com.swproject.swiis.Repositories.ProductRepo;
 import com.swproject.swiis.Repositories.SuggestedStoresRepo;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
+
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
-@Controller
+@RestController
 public class StoreOwnerController {
     @Autowired
     BrandRepo brandRepo;
@@ -54,26 +52,26 @@ public class StoreOwnerController {
 
 
     //---------------------- suggest store -----------------------
-
-    @GetMapping("/SuggestStore")
+    /*@GetMapping("/SuggestStore")
     public String create(Model model, @ModelAttribute SuggestedStores suggested) {
         model.addAttribute("suggested", new SuggestedStores());
         return "SuggestStore";
-    }
+    }*/
+    @CrossOrigin
     @PostMapping("/SuggestStore")
-    public String Add(Model model, @ModelAttribute SuggestedStores suggested, HttpServletRequest session)
+    public boolean Add(@RequestBody SuggestedStores suggestedStores, HttpServletRequest session)
     {
-        if(!suggestedStoresRepo.existsById(suggested.getStoreName()))
+        if(!suggestedStoresRepo.existsById(suggestedStores.getStoreName()))
         {
+            System.out.println((StoreOwner) session.getSession().getAttribute("storeOwner"));
             StoreOwner temp = (StoreOwner) session.getSession().getAttribute("storeOwner");
-            suggested.setStoreOwner(temp);
-            suggestedStoresRepo.save(suggested);
-            model.addAttribute("storeOwner", (StoreOwner) session.getSession().getAttribute("storeOwner"));
-            return "WelcomeOwner";
+            suggestedStores.setStoreOwner(temp);
+            suggestedStoresRepo.save(suggestedStores);
+            return true;
         }
         else
         {
-            return "StoreError";
+            return false;
         }
     }
 }

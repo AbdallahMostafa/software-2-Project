@@ -1,6 +1,7 @@
 package com.swproject.swiis.Controllers;
 
 import com.swproject.swiis.Entity.Admin;
+import com.swproject.swiis.Entity.NormalUser;
 import com.swproject.swiis.Entity.Store;
 import com.swproject.swiis.Entity.SuggestedStores;
 import com.swproject.swiis.Repositories.AdminRepo;
@@ -9,14 +10,14 @@ import com.swproject.swiis.Repositories.SuggestedStoresRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-@Controller
+@RestController
 public class AdminController {
     @Autowired
     AdminRepo adminRepo;
@@ -27,9 +28,9 @@ public class AdminController {
     @Autowired
     StoreRepo storeRepo;
 
-    public ArrayList<SuggestedStores> generateList(Iterable<SuggestedStores> iterable)
+    public Set<SuggestedStores> generateList(Iterable<SuggestedStores> iterable)
     {
-        ArrayList<SuggestedStores> storeList = new ArrayList<SuggestedStores>();
+        Set<SuggestedStores> storeList = new HashSet<SuggestedStores>();
         for(SuggestedStores suggestedStores : iterable)
         {
             storeList.add(suggestedStores);
@@ -38,46 +39,52 @@ public class AdminController {
     }
 
     //-----------------------Login---------------------------
-    @GetMapping("/AdminLogin")
+    /*@GetMapping("/AdminLogin")
     public String url(Model model, @ModelAttribute Admin admin)
     {
         model.addAttribute("admin",new Admin());
         return "AdminLogin";
     }
+*/
+    @CrossOrigin
     @PostMapping("/AdminLogin")
-    public String get (Model model,@ModelAttribute Admin admin)
+    public boolean get (String userName, String password)
     {
-        if(adminRepo.existsById(admin.getUserName()))
-        {
+        System.out.println(userName + " " +  " " + password);
+        if(adminRepo.existsById(userName)) {
+            Admin admin = adminRepo.findById(userName).get();
+            if (admin.getUserName().equals(userName) && admin.getPassWord().equals(password))
+                return true;
+        }
+        return false;
 
-            return "WelcomeAdmin";
-        }
-        else
-        {
-            return "ErrorLogin";
-        }
     }
     //-------------------------Verify------------------------
-    @GetMapping("/AcceptStore")
-    public String showStores(Model model)
+    @CrossOrigin
+    @PostMapping("/ShowStores")
+    public Set<SuggestedStores> showStores()
     {
         Iterable<SuggestedStores> suggestedStores = suggestedStoresRepo.findAll();
-        ArrayList<SuggestedStores> suggestedStoresList = generateList(suggestedStores);
-        model.addAttribute("storeslist", suggestedStoresList);
-        model.addAttribute("store",new SuggestedStores());
-        return "AcceptStore";
+        Set<SuggestedStores> suggestedStoresList = generateList(suggestedStores);
+        /*for(int i = 0; i < suggestedStoresList.size(); i++)
+        {
+            System.out.println(suggestedStoresList.get(i).getStoreName());
+        }*/
+        return suggestedStoresList;
     }
+    @CrossOrigin
     @PostMapping("/AcceptStore")
-    public String AddStore(Model model,@ModelAttribute SuggestedStores suggestedStores)
+    public boolean AddStore(String storeName)
     {
-           if(suggestedStoresRepo.existsById(suggestedStores.getStoreName()))
-           {
-               Store store = new Store(suggestedStores.getStoreLocation(),suggestedStores.getStoreName(),suggestedStores.getType(),suggestedStores.getStoreOwner());
-               storeRepo.save(store);
-               suggestedStoresRepo.delete(suggestedStores);
-               return "WelcomeAdmin";
-           }
-           else
-               return "StoreError";
+        if(suggestedStoresRepo.existsById(storeName))
+        {
+            SuggestedStores suggestedStores = suggestedStoresRepo.findById(storeName).get();
+            Store store = new Store(suggestedStores.getStoreLocation(),suggestedStores.getStoreName(),suggestedStores.getType(),suggestedStores.getStoreOwner());
+            storeRepo.save(store);
+            suggestedStoresRepo.delete(suggestedStores);
+            return true;
+        }
+        else
+            return false;
     }
 }

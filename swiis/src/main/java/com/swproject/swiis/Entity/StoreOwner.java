@@ -1,5 +1,7 @@
 package com.swproject.swiis.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -15,9 +17,11 @@ public class StoreOwner {
     private String userName;
 
     @OneToMany(targetEntity = Store.class, cascade = CascadeType.ALL, mappedBy = "storeOwner")
+    @JsonIgnore
     private Set<Store> stores;
 
     @OneToMany(targetEntity = SuggestedStores.class, cascade = CascadeType.ALL, mappedBy = "storeOwner")
+    @JsonIgnore
     private Set<SuggestedStores> suggestedStores;
 
     public StoreOwner(String name, String userName, String passWord, String email,String type)

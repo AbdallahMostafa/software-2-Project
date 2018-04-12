@@ -1,5 +1,6 @@
 package com.swproject.swiis.Controllers;
 
+import ch.qos.logback.classic.turbo.TurboFilter;
 import com.swproject.swiis.Entity.NormalUser;
 import com.swproject.swiis.Entity.StoreOwner;
 import com.swproject.swiis.Repositories.NormalUserRepo;
@@ -7,14 +8,11 @@ import com.swproject.swiis.Repositories.StoreOwnerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Controller
+@RestController
 public class UserController {
     @Autowired
     StoreOwnerRepo storeOwnerRepo;
@@ -22,73 +20,71 @@ public class UserController {
     @Autowired
     NormalUserRepo normalUserRepo;
 
-    @RequestMapping("/HomePage")
+    /*@RequestMapping("/HomePage")
     public String log() {
         return "HomePage";
-    }
+    }*/
     //-----------------------------SignUp---------------------------------
-    @GetMapping("/SignUp")
+    /*@GetMapping("/SignUp")
     public String singUp(Model model,@ModelAttribute NormalUser normalUser)
     {
         model.addAttribute("normalUser",new NormalUser());
         return "SignUp";
-    }
+    }*/
+    @CrossOrigin
     @PostMapping("/SignUp")
-    public String checkSignUp (Model model,@ModelAttribute NormalUser normalUser)
+    public boolean checkSignUp (@RequestBody NormalUser normalUser)
     {
         if(!normalUserRepo.existsById(normalUser.getUserName()) || !storeOwnerRepo.existsById(normalUser.getUserName()))
         {
            if(normalUser.getType().equals("0"))
            {
                normalUserRepo.save(normalUser);
+               return true;
            }
            else
            {
                StoreOwner storeOwner;
-               storeOwner = new StoreOwner(normalUser.getName() , normalUser.getName(),normalUser.getPassWord(),normalUser.getEmail(),normalUser.getType());
+               storeOwner = new StoreOwner(normalUser.getName() , normalUser.getUserName(),normalUser.getPassWord(),normalUser.getEmail(),normalUser.getType());
                storeOwnerRepo.save(storeOwner);
+               return true;
            }
-           return "Login";
         }else
         {
-            return "ErrorLogin";
+            return false;
         }
     }
     //------------------------------Login---------------------------------
-    @GetMapping("/Login")
+    /*@GetMapping("/Login")
     public String login(Model model, @ModelAttribute NormalUser normalUser)
     {
         model.addAttribute("normal",new NormalUser());
         return "Login";
-    }
+    }*/
+    @CrossOrigin
     @PostMapping("/Login")
-    public String checkLogin(Model model, @ModelAttribute NormalUser normalUser, HttpServletRequest session)
+    public boolean checkLogin(String userName, String password, HttpServletRequest session)
     {
-        if(normalUserRepo.existsById(normalUser.getUserName()))
-        {
-            NormalUser tempUser = normalUserRepo.findById(normalUser.getUserName()).get();
-            if(tempUser.getUserName().equals(normalUser.getUserName()) && tempUser.getPassWord().equals(normalUser.getPassWord()))
-            {
+        if(normalUserRepo.existsById(userName)) {
+            NormalUser tempUser = normalUserRepo.findById(userName).get();
+            if (tempUser.getUserName().equals(userName) && tempUser.getPassWord().equals(password)) {
                 session.getSession().setAttribute("customer", tempUser);
                 NormalUser temp = (NormalUser) session.getSession().getAttribute("customer");
                 //System.out.println((NormalUser)session.getSession().getAttribute("customer"));
-                return "Welcome";
-            }
-            else
-            {
-                return "ErrorLogin";
+                return true;
+            } else {
+                return false;
             }
         }
-        //System.out.println(storeOwnerRepo.existsById(normalUser.getUserName()));
-        else if(storeOwnerRepo.existsById(normalUser.getUserName()))
+        else if(storeOwnerRepo.existsById(userName))
         {
-            StoreOwner tempStoreOwner = storeOwnerRepo.findById(normalUser.getUserName()).get();
-            System.out.println(tempStoreOwner.getUserName() + " " + tempStoreOwner.getPassWord() + " " + normalUser.getUserName() + " "+ normalUser.getPassWord());
-            if(tempStoreOwner.getUserName().equals(normalUser.getUserName()) && tempStoreOwner.getPassWord().equals(normalUser.getPassWord())) {
+            StoreOwner tempStoreOwner = storeOwnerRepo.findById(userName).get();
+            if(tempStoreOwner.getUserName().equals(userName) && tempStoreOwner.getPassWord().equals(password)) {
                 session.getSession().setAttribute("storeOwner", tempStoreOwner);
-                return "WelcomeOwner";
+                System.out.println((StoreOwner) session.getSession().getAttribute("storeOwner"));
+                return true;
             }
         }
-        return "ErrorLogin";
+        return false;
     }
 }
