@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import java.util.Optional;
+
 @Controller
 public class BrandController {
     @Autowired
@@ -25,8 +27,10 @@ public class BrandController {
 
         if(!brandRepo.existsById(brand.getName()))
         {
-            brandRepo.save(brand);
-            return "AddProductToSystem";
+            Brand temp = new Brand();
+            temp.setName(brand.getName());
+            brandRepo.save(temp);
+            return "WelcomeAdmin";
         }
         else
         {
