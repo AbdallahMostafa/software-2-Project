@@ -45,7 +45,7 @@ public class UserController {
            else
            {
                StoreOwner storeOwner;
-               storeOwner = new StoreOwner(normalUser.getName() , normalUser.getName(),normalUser.getPassWord(),normalUser.getEmail(),normalUser.getType());
+               storeOwner = new StoreOwner(normalUser.getName() , normalUser.getUserName(),normalUser.getPassWord(),normalUser.getEmail(),normalUser.getType());
                storeOwnerRepo.save(storeOwner);
            }
            return "Login";
@@ -71,7 +71,6 @@ public class UserController {
             {
                 session.getSession().setAttribute("customer", tempUser);
                 NormalUser temp = (NormalUser) session.getSession().getAttribute("customer");
-                //System.out.println((NormalUser)session.getSession().getAttribute("customer"));
                 return "Welcome";
             }
             else
@@ -79,7 +78,6 @@ public class UserController {
                 return "ErrorLogin";
             }
         }
-        //System.out.println(storeOwnerRepo.existsById(normalUser.getUserName()));
         else if(storeOwnerRepo.existsById(normalUser.getUserName()))
         {
             StoreOwner tempStoreOwner = storeOwnerRepo.findById(normalUser.getUserName()).get();

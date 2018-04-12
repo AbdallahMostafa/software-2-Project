@@ -31,6 +31,7 @@ public class Store {
         this.productInstance = null;
     }
 
+
     public void setProductInstance(ProductInstance productInstance) {
         this.productInstance.add(productInstance);
     }

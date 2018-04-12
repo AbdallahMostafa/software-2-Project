@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class AdminController {
@@ -70,14 +70,16 @@ public class AdminController {
     @PostMapping("/AcceptStore")
     public String AddStore(Model model,@ModelAttribute SuggestedStores suggestedStores)
     {
-           if(suggestedStoresRepo.existsById(suggestedStores.getStoreName()))
-           {
-               Store store = new Store(suggestedStores.getStoreLocation(),suggestedStores.getStoreName(),suggestedStores.getType(),suggestedStores.getStoreOwner());
-               storeRepo.save(store);
-               suggestedStoresRepo.delete(suggestedStores);
-               return "WelcomeAdmin";
-           }
-           else
-               return "StoreError";
+        if(suggestedStoresRepo.existsById(suggestedStores.getStoreName()))
+        {
+
+            Optional<SuggestedStores> temp = suggestedStoresRepo.findById(suggestedStores.getStoreName());
+            Store store = new Store(temp.get().getStoreLocation(),temp.get().getStoreName(),temp.get().getType(),temp.get().getStoreOwner());
+            storeRepo.save(store);
+            suggestedStoresRepo.delete(suggestedStores);
+            return "WelcomeAdmin";
+        }
+        else
+            return "StoreError";
     }
 }
