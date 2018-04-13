@@ -7,6 +7,8 @@ import {HomePageComponent} from './consumer/homePage.component';
 import {ConsumeUserSignUp} from './consumer/consumeUserSignUp.component';
 import {ConsumeUserLogin} from './consumer/consumeUserLogin.component';
 import {ConsumeSuggestStores} from './consumer/consumeSuggestStores.component';
+import {ConsumeShowStoresOfSystem} from './consumer/consumeShowStoresOfSystem.component';
+
 const app_routs: Routes = [
     {
         path: '',
@@ -31,6 +33,10 @@ const app_routs: Routes = [
     {
         path: 'SuggestStore',
         component : ConsumeSuggestStores
+    },
+    {
+        path: 'showStoresOfSystem',
+        component: ConsumeShowStoresOfSystem
     },
 
 ]

@@ -1,5 +1,9 @@
 package com.swproject.swiis.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -10,9 +14,12 @@ public class Store {
     private String storeName;
 
     @ManyToOne
+    @JsonBackReference
     private StoreOwner storeOwner;
 
     @OneToMany(targetEntity = ProductInstance.class, cascade = CascadeType.ALL, mappedBy = "store")
+    @JsonManagedReference
+
     private Set<ProductInstance> productInstance;
     
     public Store(String storeLocation, String storeName, String type,StoreOwner storeOwner) {

@@ -1,5 +1,8 @@
 package com.swproject.swiis.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -12,6 +15,7 @@ public class Brand {
     @Id
     private String name;
     @OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL, mappedBy = "brand")
+    @JsonManagedReference
     private Set<Product> products;
 
     public Brand() {

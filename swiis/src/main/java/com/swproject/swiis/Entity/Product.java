@@ -1,5 +1,9 @@
 package com.swproject.swiis.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -15,8 +19,11 @@ public class Product {
     private long id;
     private double productPriceMax,productPriceMin;
     @ManyToOne
+    @JsonBackReference
     Brand brand;
+
     @OneToMany(targetEntity = ProductInstance.class, cascade = CascadeType.ALL, mappedBy = "product")
+    @JsonManagedReference
     private Set<ProductInstance> productInstance;
     public long getID() {
         return id;

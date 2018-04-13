@@ -1,5 +1,7 @@
 package com.swproject.swiis.Entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,9 +12,12 @@ public class ProductInstance {
     private long id;
     double price;
     @ManyToOne
+    @JsonBackReference
     private Product product;
     @ManyToOne
+    @JsonBackReference
     private Store store;
+
     private int counter;
 
     public ProductInstance(double price, Product product, Store store, int counter) {

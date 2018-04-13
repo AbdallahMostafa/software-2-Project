@@ -17,7 +17,7 @@ import java.util.Optional;
 
 @Controller
 public class NormalUserController {
-    @Autowired
+    /*@Autowired
     StoreRepo storeRepo;
     @Autowired
     ProductRepo productRepo;
@@ -54,5 +54,5 @@ public class NormalUserController {
         }
         else
             return "StoreError";
-    }
+    }*/
 }
