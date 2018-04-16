@@ -17,14 +17,14 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
+
     private double productPriceMax,productPriceMin;
     @ManyToOne
-    @JsonBackReference
     Brand brand;
 
-    @OneToMany(targetEntity = ProductInstance.class, cascade = CascadeType.ALL, mappedBy = "product")
-    @JsonManagedReference
+    @OneToMany(targetEntity = ProductInstance.class, cascade = CascadeType.ALL)
     private Set<ProductInstance> productInstance;
+
     public long getID() {
         return id;
     }
@@ -35,6 +35,14 @@ public class Product {
 
     public void setBrand(Brand brand) {
         this.brand = brand;
+    }
+
+    public Set<ProductInstance> getProductInstance() {
+        return productInstance;
+    }
+
+    public void setProductInstance(Set<ProductInstance> productInstance) {
+        this.productInstance = productInstance;
     }
 
     public String getType() {

@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 @RestController
 public class UserController {
@@ -68,9 +69,8 @@ public class UserController {
         if(normalUserRepo.existsById(userName)) {
             NormalUser tempUser = normalUserRepo.findById(userName).get();
             if (tempUser.getUserName().equals(userName) && tempUser.getPassWord().equals(password)) {
-                session.getSession().setAttribute("customer", tempUser);
+                //session.getSession().setAttribute("customer", tempUser);
                 NormalUser temp = (NormalUser) session.getSession().getAttribute("customer");
-                //System.out.println((NormalUser)session.getSession().getAttribute("customer"));
                 return true;
             } else {
                 return false;

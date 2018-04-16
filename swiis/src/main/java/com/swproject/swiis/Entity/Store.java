@@ -13,15 +13,11 @@ public class Store {
     @Id
     private String storeName;
 
-    @ManyToOne
-    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.ALL)
     private StoreOwner storeOwner;
-
-    @OneToMany(targetEntity = ProductInstance.class, cascade = CascadeType.ALL, mappedBy = "store")
-    @JsonManagedReference
-
+    @OneToMany(targetEntity = ProductInstance.class, cascade = CascadeType.ALL)
     private Set<ProductInstance> productInstance;
-    
+
     public Store(String storeLocation, String storeName, String type,StoreOwner storeOwner) {
         this.storeLocation = storeLocation;
         this.storeName = storeName;

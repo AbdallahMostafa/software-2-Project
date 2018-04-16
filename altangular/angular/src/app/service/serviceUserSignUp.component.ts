@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import {Observable} from 'rxjs/Observable';
 import {User} from '../interface/userInterFace';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpModule} from '@angular/http'; 
 @Injectable()
 export class ServiceUserSignUp
 {

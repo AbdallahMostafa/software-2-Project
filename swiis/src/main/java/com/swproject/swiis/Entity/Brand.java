@@ -14,8 +14,7 @@ import java.util.Set;
 public class Brand {
     @Id
     private String name;
-    @OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL, mappedBy = "brand")
-    @JsonManagedReference
+    @OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
     private Set<Product> products;
 
     public Brand() {

@@ -6,14 +6,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
 import { AppComponent }  from './app.component';
 
-
 import{ServiceAdminLogin} from "./service/serviceAdminLogin.component";
 import{ServiceAcceptStores} from "./service/serviceAcceptStores.component";
 import {ServiceUserSignUp} from './service/serviceUserSignUp.component';
 import {ServiceSuggestStores} from './service/serviceSuggestStores.component';
 import {ServiceShowStoresOfSystem} from './service/serviceShowStoresOfSystem.component';
-
-
 import {HomePageComponent} from './consumer/homePage.component';
 import {StoreOwnerHomePageComponent} from './consumer/storeOwnerHomePage.component';
 
@@ -23,6 +20,13 @@ import {ConsumeSuggestStores} from './consumer/consumeSuggestStores.component';
 import{ConsumeAdminLogin} from './consumer/consumeAdminLogin.component';
 import {ConsumeAcceptStores} from './consumer/consumeAcceptStore.component';
 import {ConsumeShowStoresOfSystem} from './consumer/consumeShowStoresOfSystem.component';
+import {ConsumeShowProductOfStore} from './consumer/consumeShowProductOfStore.component';
+
+import { SESSION_STORAGE } from 'angular-webstorage-service';
+import { StorageServiceModule } from 'angular-webstorage-service';
+import { MY_AWESOME_SERVICE_STORAGE, MyAwesomeService } from './test/test';
+
+
 @NgModule({
   imports:      [ 
     BrowserModule,
@@ -30,6 +34,7 @@ import {ConsumeShowStoresOfSystem} from './consumer/consumeShowStoresOfSystem.co
      routers,
      HttpClientModule,
      FormsModule,
+     StorageServiceModule,
      ],
 
   declarations: [
@@ -42,13 +47,17 @@ import {ConsumeShowStoresOfSystem} from './consumer/consumeShowStoresOfSystem.co
      ConsumeSuggestStores,
      StoreOwnerHomePageComponent,
      ConsumeShowStoresOfSystem,
+     ConsumeShowProductOfStore,
     ],
   providers: [
+    {provide : MY_AWESOME_SERVICE_STORAGE, useExisting: SESSION_STORAGE},
+    MyAwesomeService,
     ServiceAdminLogin,
     ServiceAcceptStores, 
     ServiceUserSignUp, 
     ServiceSuggestStores,
     ServiceShowStoresOfSystem,
+    
   ],
   bootstrap:    [ AppComponent ]
 })

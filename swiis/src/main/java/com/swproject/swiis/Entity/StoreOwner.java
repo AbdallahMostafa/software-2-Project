@@ -16,11 +16,11 @@ public class StoreOwner {
     @Id
     private String userName;
 
-    @OneToMany(targetEntity = Store.class, cascade = CascadeType.ALL, mappedBy = "storeOwner")
+    @OneToMany(targetEntity = Store.class, cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<Store> stores;
 
-    @OneToMany(targetEntity = SuggestedStores.class, cascade = CascadeType.ALL, mappedBy = "storeOwner")
+    @OneToMany(targetEntity = SuggestedStores.class, cascade = CascadeType.ALL)
     @JsonIgnore
     private Set<SuggestedStores> suggestedStores;
 

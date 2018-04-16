@@ -1,6 +1,8 @@
 package com.swproject.swiis.Entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 
@@ -10,12 +12,12 @@ public class ProductInstance {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
+
     double price;
-    @ManyToOne
-    @JsonBackReference
+    @ManyToOne(cascade = CascadeType.ALL)
     private Product product;
-    @ManyToOne
-    @JsonBackReference
+
+    @ManyToOne(cascade = CascadeType.ALL)
     private Store store;
 
     private int counter;

@@ -3,7 +3,8 @@ import {ServiceUserSignUp} from '../service/serviceUserSignUp.component';
 import 'rxjs/add/operator/map';
 import { ActivatedRoute, Router } from '@angular/router'
 import { User } from '../interface/userInterFace';
-
+import {MyAwesomeService} from '../test/test';
+import { Http ,HttpModule} from '@angular/http';
 
 @Component
 ({
@@ -30,9 +31,8 @@ export class ConsumeUserSignUp implements OnInit
     password: any;
     emial: any;
     type: any;*/
-
-    reciveData:any;
     normalUser : User ={ name : '' ,userName:'' ,passWord:'' ,email:'' ,type:''};
+    dummy: any;
     ngOnInit() {
     }
     constructor(private router: Router, private route: ActivatedRoute,private serviceObject:ServiceUserSignUp)
