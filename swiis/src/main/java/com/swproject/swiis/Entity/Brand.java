@@ -13,26 +13,26 @@ import java.util.Set;
 @Entity
 public class Brand {
     @Id
-    private String name;
+    private String brandName;
     @OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
     private Set<Product> products;
 
     public Brand() {
-        name="";
+        brandName="";
         products=new HashSet<Product>();
     }
 
     public Brand(String name, Set<Product> products) {
-        this.name = name;
+        this.brandName = name;
         this.products = products;
     }
 
-    public String getName() {
-        return name;
+    public String getBrandName() {
+        return brandName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setBrandName(String brandName) {
+        this.brandName = brandName;
     }
 
     public Set<Product> getProducts() {

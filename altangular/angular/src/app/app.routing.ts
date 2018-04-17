@@ -9,6 +9,7 @@ import {ConsumeUserLogin} from './consumer/consumeUserLogin.component';
 import {ConsumeSuggestStores} from './consumer/consumeSuggestStores.component';
 import {ConsumeShowStoresOfSystem} from './consumer/consumeShowStoresOfSystem.component';
 import {ConsumeShowProductOfStore} from './consumer/consumeShowProductOfStore.component';
+import {ConsumeAddProductToSystem} from './consumer/ConsumeAddProductToSystem.component';
 
 const app_routs: Routes = [
     {
@@ -42,6 +43,10 @@ const app_routs: Routes = [
     {
         path : 'showProductOfStore',
         component : ConsumeShowProductOfStore
+    },
+    {
+        path : 'AddProductToSystem',
+        component : ConsumeAddProductToSystem
     },
 
 ]

@@ -23,17 +23,21 @@ public class ProductController {
     }*/
     @CrossOrigin
     @PostMapping("/AddProductToSystem")
-    public boolean Add(Model model, @ModelAttribute Product product)
+    public boolean Add(@RequestBody Product product)
     {
         product.setProductName(product.getProductName().toLowerCase());
-        if(!productRepo.existsById(product.getID()))
+        if(!productRepo.existsById(product.getProductName()))
         {
-            productRepo.save(product);
-            return true;
+            if(product.getProductType().equals("0")) {
+                System.out.println(product.getBrand().getBrandName());
+                productRepo.save(product);
+                return true;
+            }
+            else {
+                productRepo.save(product);
+            }
         }
-        else
-        {
-            return false;
-        }
+        return false;
+
     }
 }
