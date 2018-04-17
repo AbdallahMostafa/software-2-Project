@@ -41,11 +41,6 @@ export class ConsumeUserSignUp implements OnInit
     }
     onSubmit()
     {
-        /*this.name = name;
-        this.username = username;
-        this.password = password;
-        this.emial = emial;
-        this.type = type;*/
         this.serviceObject.get(this.normalUser).subscribe(
             value => {
               console.log('[POST] create Customer successfully', value);

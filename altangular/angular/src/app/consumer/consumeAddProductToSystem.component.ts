@@ -33,16 +33,10 @@ providers:[ServiceAddProductToSystem]
 })
 export class ConsumeAddProductToSystem implements OnInit
 {
-    /*name: any;
-    username: any;
-    password: any;
-    emial: any;
-    type: any;*/
     product : Product ={productName : '' ,productCategory : '' ,productType:'' , brand: {brandName : ''}  , productPriceMax: 0, productPriceMin :0 };
-    //brand : Brand = {brandName : ''}
+    
     recivedData: any;
     ngOnInit() {
-        // this.get_brand();
     }
     constructor(private router: Router, private route: ActivatedRoute,private serviceObject:ServiceAddProductToSystem)
     {
@@ -53,10 +47,9 @@ export class ConsumeAddProductToSystem implements OnInit
     {
         this.serviceObject.get_brands().subscribe(
             value =>{
-                this.recivedData = value.json();
-                //console.log('[POST] get brands successfully', value);
+                this.recivedData = value.json(); 
             });
-            console.log(this.recivedData);
+            //console.log(this.recivedData);
     }
     onSubmit()
     {

@@ -66,12 +66,15 @@ public class UserController {
     @PostMapping("/Login")
     public boolean checkLogin(String userName, String password, HttpServletRequest session)
     {
+        boolean normalUser = false;
+        boolean storeOwner = false;
         if(normalUserRepo.existsById(userName)) {
             NormalUser tempUser = normalUserRepo.findById(userName).get();
             if (tempUser.getUserName().equals(userName) && tempUser.getPassWord().equals(password)) {
                 //session.getSession().setAttribute("customer", tempUser);
                 NormalUser temp = (NormalUser) session.getSession().getAttribute("customer");
-                return true;
+                normalUser = true;
+                return  normalUser;
             } else {
                 return false;
             }
@@ -81,8 +84,9 @@ public class UserController {
             StoreOwner tempStoreOwner = storeOwnerRepo.findById(userName).get();
             if(tempStoreOwner.getUserName().equals(userName) && tempStoreOwner.getPassWord().equals(password)) {
                 session.getSession().setAttribute("storeOwner", tempStoreOwner);
-                System.out.println((StoreOwner) session.getSession().getAttribute("storeOwner"));
-                return true;
+                //System.out.println((StoreOwner) session.getSession().getAttribute("storeOwner"));
+                storeOwner = true;
+                return storeOwner;
             }
         }
         return false;

@@ -33,11 +33,6 @@ export class ConsumeSuggestStores implements OnInit
     {
         
     }
-    /*show_suggested_stores()
-    {
-        this.serviceObject.get().subscribe(data =>{this.reciveData=data;});
-        console.log(this.reciveData);
-    }*/
     onSubmit()
     {
         

@@ -1,15 +1,21 @@
 import {ModuleWithProviders} from '@angular/core';
 import {Routes, RouterModule} from '@angular/router';
 
-import {ConsumeAcceptStores} from './consumer/consumeAcceptStore.component';
-import { ConsumeAdminLogin } from './consumer/consumeAdminLogin.component';
-import {HomePageComponent} from './consumer/homePage.component';
+
+import {HomePageComponent} from './Pages/homePage.component';
+import {StoreOwnerHomePageComponent} from './Pages/storeOwnerHomePage.component';
+import {AdminHomePageComponent} from './Pages/adminHomePage.component';
+
 import {ConsumeUserSignUp} from './consumer/consumeUserSignUp.component';
 import {ConsumeUserLogin} from './consumer/consumeUserLogin.component';
 import {ConsumeSuggestStores} from './consumer/consumeSuggestStores.component';
 import {ConsumeShowStoresOfSystem} from './consumer/consumeShowStoresOfSystem.component';
 import {ConsumeShowProductOfStore} from './consumer/consumeShowProductOfStore.component';
 import {ConsumeAddProductToSystem} from './consumer/ConsumeAddProductToSystem.component';
+import {ConsumeAddBrandToSystem} from './consumer/consumeAddBrandToSystem.component';
+import {ConsumeAcceptStores} from './consumer/consumeAcceptStore.component';
+import { ConsumeAdminLogin } from './consumer/consumeAdminLogin.component';
+
 
 const app_routs: Routes = [
     {
@@ -48,7 +54,10 @@ const app_routs: Routes = [
         path : 'AddProductToSystem',
         component : ConsumeAddProductToSystem
     },
-
+    {
+        path : 'AddBrandToSystem',
+        component : ConsumeAddBrandToSystem
+    },
 ]
 
 export const routers : ModuleWithProviders = RouterModule.forRoot(app_routs);

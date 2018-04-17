@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 selector:'home-page',
 template:`
 <a [routerLink]='["/SignUp"]'>SignUp</a>
-<a [routerLink]='["/Login"]'>Admin Login</a>
+<a [routerLink]='["/Login"]'>User Login</a>
 `,
 
 })

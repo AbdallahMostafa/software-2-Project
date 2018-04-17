@@ -12,8 +12,11 @@ import {ServiceUserSignUp} from './service/serviceUserSignUp.component';
 import {ServiceSuggestStores} from './service/serviceSuggestStores.component';
 import {ServiceShowStoresOfSystem} from './service/serviceShowStoresOfSystem.component';
 import {ServiceAddProductToSystem} from './service/serviceAddProductToSystem.component';
-import {HomePageComponent} from './consumer/homePage.component';
-import {StoreOwnerHomePageComponent} from './consumer/storeOwnerHomePage.component';
+import {ServiceAddBrandToSystem} from './service/serviceAddBrandToSystem.component';
+
+import {HomePageComponent} from './Pages/homePage.component';
+import {StoreOwnerHomePageComponent} from './Pages/storeOwnerHomePage.component';
+import {AdminHomePageComponent} from './Pages/adminHomePage.component';
 
 import {ConsumeUserSignUp} from './consumer/consumeUserSignUp.component';
 import {ConsumeUserLogin} from './consumer/consumeUserLogin.component';
@@ -23,6 +26,7 @@ import {ConsumeAcceptStores} from './consumer/consumeAcceptStore.component';
 import {ConsumeShowStoresOfSystem} from './consumer/consumeShowStoresOfSystem.component';
 import {ConsumeShowProductOfStore} from './consumer/consumeShowProductOfStore.component';
 import {ConsumeAddProductToSystem} from './consumer/ConsumeAddProductToSystem.component';
+import {ConsumeAddBrandToSystem} from './consumer/consumeAddBrandToSystem.component';
 import { SESSION_STORAGE } from 'angular-webstorage-service';
 import { StorageServiceModule } from 'angular-webstorage-service';
 import { MY_AWESOME_SERVICE_STORAGE, MyAwesomeService } from './test/test';
@@ -47,9 +51,12 @@ import { MY_AWESOME_SERVICE_STORAGE, MyAwesomeService } from './test/test';
      ConsumeUserLogin, 
      ConsumeSuggestStores,
      StoreOwnerHomePageComponent,
+     AdminHomePageComponent,
      ConsumeShowStoresOfSystem,
      ConsumeShowProductOfStore,
      ConsumeAddProductToSystem,
+     ConsumeAddBrandToSystem,
+     AdminHomePageComponent,
     ],
   providers: [
     {provide : MY_AWESOME_SERVICE_STORAGE, useExisting: SESSION_STORAGE},
@@ -60,6 +67,7 @@ import { MY_AWESOME_SERVICE_STORAGE, MyAwesomeService } from './test/test';
     ServiceSuggestStores,
     ServiceShowStoresOfSystem,
     ServiceAddProductToSystem,
+    ServiceAddBrandToSystem,
   ],
   bootstrap:    [ AppComponent ]
 })

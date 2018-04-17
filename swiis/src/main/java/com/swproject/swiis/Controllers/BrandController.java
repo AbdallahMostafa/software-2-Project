@@ -39,20 +39,19 @@ public class BrandController {
         Set<Brand> brandSet = generateList(brands);
         return brandSet;
     }
-    /*
+
     @CrossOrigin
     @PostMapping("/AddBrandToSystem")
-    public String Add(Model model, @ModelAttribute Brand brand)
+    public boolean Add(@RequestBody Brand brand)
     {
-
-        if(!brandRepo.existsById(brand.getName()))
+        if(!brandRepo.existsById(brand.getBrandName()))
         {
             brandRepo.save(brand);
-            return "AddProductToSystem";
+            return true;
         }
         else
         {
-            return "ProductError";
+            return false;
         }
-    }*/
+    }
 }
