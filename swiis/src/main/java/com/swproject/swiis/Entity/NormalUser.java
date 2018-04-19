@@ -2,9 +2,21 @@ package com.swproject.swiis.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class NormalUser {
+    @OneToOne
+    private Cart cart;
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
+    }
+
     private String name ,passWord,email,type;
     @Id
     private String userName;

@@ -45,9 +45,9 @@ public class UserController {
            }
            else
            {
-               StoreOwner storeOwner;
-               storeOwner = new StoreOwner(normalUser.getName() , normalUser.getUserName(),normalUser.getPassWord(),normalUser.getEmail(),normalUser.getType());
-               storeOwnerRepo.save(storeOwner);
+               //StoreOwner storeOwner;
+               //storeOwner = new StoreOwner(normalUser.getName() , normalUser.getUserName(),normalUser.getPassWord(),normalUser.getEmail(),normalUser.getType());
+               storeOwnerRepo.save(normalUser);
                return true;
            }
         }else
@@ -68,8 +68,9 @@ public class UserController {
     {
         boolean normalUser = false;
         boolean storeOwner = false;
+        NormalUser tempUser;
         if(normalUserRepo.existsById(userName)) {
-            NormalUser tempUser = normalUserRepo.findById(userName).get();
+            tempUser = normalUserRepo.findById(userName).get();
             if (tempUser.getUserName().equals(userName) && tempUser.getPassWord().equals(password)) {
                 //session.getSession().setAttribute("customer", tempUser);
                 NormalUser temp = (NormalUser) session.getSession().getAttribute("customer");
@@ -81,9 +82,9 @@ public class UserController {
         }
         else if(storeOwnerRepo.existsById(userName))
         {
-            StoreOwner tempStoreOwner = storeOwnerRepo.findById(userName).get();
-            if(tempStoreOwner.getUserName().equals(userName) && tempStoreOwner.getPassWord().equals(password)) {
-                session.getSession().setAttribute("storeOwner", tempStoreOwner);
+            tempUser = storeOwnerRepo.findById(userName).get();
+            if(tempUser.getUserName().equals(userName) && tempUser.getPassWord().equals(password)) {
+                session.getSession().setAttribute("storeOwner", tempUser);
                 //System.out.println((StoreOwner) session.getSession().getAttribute("storeOwner"));
                 storeOwner = true;
                 return storeOwner;

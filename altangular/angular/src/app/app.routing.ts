@@ -12,10 +12,8 @@ import {ConsumeSuggestStores} from './consumer/consumeSuggestStores.component';
 import {ConsumeShowStoresOfSystem} from './consumer/consumeShowStoresOfSystem.component';
 import {ConsumeShowProductOfStore} from './consumer/consumeShowProductOfStore.component';
 import {ConsumeAddProductToSystem} from './consumer/ConsumeAddProductToSystem.component';
-import {ConsumeAddBrandToSystem} from './consumer/consumeAddBrandToSystem.component';
 import {ConsumeAcceptStores} from './consumer/consumeAcceptStore.component';
 import { ConsumeAdminLogin } from './consumer/consumeAdminLogin.component';
-
 
 const app_routs: Routes = [
     {
@@ -53,10 +51,6 @@ const app_routs: Routes = [
     {
         path : 'AddProductToSystem',
         component : ConsumeAddProductToSystem
-    },
-    {
-        path : 'AddBrandToSystem',
-        component : ConsumeAddBrandToSystem
     },
 ]
 

@@ -13,14 +13,29 @@ public class ProductInstance {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
 
-    double price;
+    private double price;
     @ManyToOne(cascade = CascadeType.ALL)
     private Product product;
 
     @ManyToOne(cascade = CascadeType.ALL)
     private Store store;
 
-    private int counter;
+    @ManyToMany
+    private Cart cart;
+
+    private int counter, quantity;
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 
     public ProductInstance(double price, Product product, Store store, int counter) {
         this.price = price;
@@ -28,8 +43,9 @@ public class ProductInstance {
         this.store = store;
         this.counter = counter;
     }
+
     public int getCounter() {
-        return counter;
+        return counter++;
     }
 
     public void setCounter(int counter) {
@@ -63,5 +79,13 @@ public class ProductInstance {
 
     public Store getStore() {
         return store;
+    }
+
+    public Cart getCart() {
+        return cart;
+    }
+
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
 }

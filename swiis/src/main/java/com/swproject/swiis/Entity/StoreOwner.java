@@ -10,11 +10,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-public class StoreOwner {
-
-    private String name,passWord,email,type;
-    @Id
-    private String userName;
+public class StoreOwner extends NormalUser{
 
     @OneToMany(targetEntity = Store.class, cascade = CascadeType.ALL)
     @JsonIgnore
@@ -27,26 +23,26 @@ public class StoreOwner {
     public StoreOwner(String name, String userName, String passWord, String email,String type)
     {
         super();
-        this.name = name;
+        /*this.name = name;
         this.userName = userName;
         this.passWord = passWord;
         this.email = email;
-        this.type = type;
+        this.type = type;*/
         this.suggestedStores = new HashSet<SuggestedStores>();
         this.stores = new HashSet<Store>();
     }
 
     public StoreOwner() {
-        this.email = "";
+        /*his.email = "";
         this.name = "";
         this.passWord = "";
         this.userName ="";
-        this.type = "";
+        this.type = "";*/
         this.stores = new HashSet<Store>();
         this.suggestedStores = new HashSet<SuggestedStores>();
     }
 
-    public void setName(String name) {
+    /*public void setName(String name) {
         this.name = name;
     }
 
@@ -84,7 +80,8 @@ public class StoreOwner {
 
     public String getName() {
         return name;
-    }
+    }*/
+
     public Set<Store> getStores() {
         return stores;
     }
