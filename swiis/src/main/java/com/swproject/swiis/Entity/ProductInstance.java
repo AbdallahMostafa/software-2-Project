@@ -20,7 +20,7 @@ public class ProductInstance {
     @ManyToOne(cascade = CascadeType.ALL)
     private Store store;
 
-    @ManyToMany
+    @ManyToOne(cascade = CascadeType.ALL)
     private Cart cart;
 
     private int counter, quantity;

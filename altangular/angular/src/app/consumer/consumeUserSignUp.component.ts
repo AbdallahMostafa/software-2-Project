@@ -15,11 +15,13 @@ template:`
     <p>UserName: <input [(ngModel)]="normalUser.userName" [ngModelOptions]="{standalone: true}" type="text"></p>
     <p>Password: <input [(ngModel)]="normalUser.passWord" [ngModelOptions]="{standalone: true}" type="password" ></p>
     <p>Email: <input [(ngModel)]="normalUser.email" [ngModelOptions]="{standalone: true}" type="text"></p>
-    <select [(ngModel)]="normalUser.type" [ngModelOptions]="{standalone: true}" >
-        <option value="0">Normal User</option>
-        <option value="1">Store Owner</option>
-    </select>
-    <p><input type="submit" value="Submit" /></p>
+    <p>Select Type :
+        <select [(ngModel)]="normalUser.type" [ngModelOptions]="{standalone: true}" >
+            <option value="0">Normal User</option>
+            <option value="1">Store Owner</option>
+        </select>
+    </p>
+    <p><input type="submit" value="Sign Up" /></p>
 </form>
 `,
 providers:[ServiceUserSignUp]

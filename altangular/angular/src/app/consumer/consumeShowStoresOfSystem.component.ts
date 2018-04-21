@@ -44,9 +44,6 @@ export class ConsumeShowStoresOfSystem
     }
     navgate(storeName: any){
         this.serviceObject.setStoreName(storeName);
-        //this.session.doSomethingAwesome(storeName);
-        //this.serviceObject.get_porducts(storeName).subscribe(data => {this.Dara = data;});
         this.router.navigate(['/showProductOfStore', {storeName:storeName}], { relativeTo: this.route})
-
     }
 }

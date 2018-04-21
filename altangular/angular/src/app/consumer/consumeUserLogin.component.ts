@@ -9,9 +9,9 @@ import {MyAwesomeService} from '../test/test';
 selector:'user-sign-in',
 template:`
 
-<input type='text' #name>
-<input type='text' #pass>
-<button (click)="click_me(name.value, pass.value)">click</button>
+<p> User Name : <input type='text' #name> </p> 
+<p> Password : <input type='text' #pass> </p>
+<button (click)="click_me(name.value, pass.value)">Login</button>
 `,
 providers:[ServiceUserLogin]
 })
@@ -33,6 +33,5 @@ export class ConsumeUserLogin
         this.serviceObject.get(this.username,this.password ).subscribe(data =>{this.reciveData=data;});
         console.log(this.reciveData);
         this.router.navigate(['/SuggestStore', {  }], { relativeTo: this.route});
-
     }
 }

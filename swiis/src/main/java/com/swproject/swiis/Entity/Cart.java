@@ -1,16 +1,33 @@
 package com.swproject.swiis.Entity;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
 public class Cart {
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @Id
+    int id;
+
+    @OneToMany(targetEntity = ProductInstance.class,cascade = CascadeType.ALL)
+    private Set<ProductInstance> productInstance;
+
+    @OneToOne
     private NormalUser normalUser;
+
+    public Cart() {
+        this.productInstance = new HashSet<ProductInstance>();
+
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public NormalUser getNormalUser() {
         return normalUser;
@@ -27,8 +44,4 @@ public class Cart {
     public void setProductInstance(Set<ProductInstance> productInstance) {
         this.productInstance = productInstance;
     }
-
-    @ManyToMany(cascade = CascadeType.ALL)
-
-    private Set<ProductInstance> productInstance;
 }

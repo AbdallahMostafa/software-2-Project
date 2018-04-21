@@ -10,7 +10,7 @@ export class MyAwesomeService {
  
     }
  
-    public doSomethingAwesome(storeName : any):any {
+    public setStoreOwnerSession(storeName : any):any {
         let STORAGE_KEY = "storeName";
         let session = this.storage.set(STORAGE_KEY, storeName );
         return session;
