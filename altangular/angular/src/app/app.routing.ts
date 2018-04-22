@@ -14,6 +14,7 @@ import {ConsumeShowProductOfStore} from './consumer/consumeShowProductOfStore.co
 import {ConsumeAddProductToSystem} from './consumer/ConsumeAddProductToSystem.component';
 import {ConsumeAcceptStores} from './consumer/consumeAcceptStore.component';
 import { ConsumeAdminLogin } from './consumer/consumeAdminLogin.component';
+import {ConsumeBrandService} from './consumer/consumeBrandService.component';
 
 const app_routs: Routes = [
     {
@@ -51,6 +52,14 @@ const app_routs: Routes = [
     {
         path : 'AddProductToSystem',
         component : ConsumeAddProductToSystem
+    },
+    {
+        path : 'AddBrandToSystem',
+        component : ConsumeBrandService
+    },
+    {
+        path : 'LoggedIn',
+        component : AdminHomePageComponent
     },
 ]
 

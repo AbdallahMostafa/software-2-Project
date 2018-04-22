@@ -10,9 +10,9 @@ export class MyAwesomeService {
  
     }
  
-    public setStoreOwnerSession(storeName : any):any {
-        let STORAGE_KEY = "storeName";
-        let session = this.storage.set(STORAGE_KEY, storeName );
+    public setSession(Name : any):any {
+        let STORAGE_KEY = "Name";
+        let session = this.storage.set(STORAGE_KEY, Name );
         return session;
     }
     public getSession(key:any):any {
