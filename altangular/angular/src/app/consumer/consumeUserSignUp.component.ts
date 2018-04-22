@@ -10,19 +10,21 @@ import { Http ,HttpModule} from '@angular/http';
 ({
 selector:'sign-up',
 template:`
-<form (ngSubmit) = "onSubmit()">
-    <p>Name: <input [(ngModel)]="normalUser.name" [ngModelOptions]="{standalone: true}" type="text"></p>
-    <p>UserName: <input [(ngModel)]="normalUser.userName" [ngModelOptions]="{standalone: true}" type="text"></p>
-    <p>Password: <input [(ngModel)]="normalUser.passWord" [ngModelOptions]="{standalone: true}" type="password" ></p>
-    <p>Email: <input [(ngModel)]="normalUser.email" [ngModelOptions]="{standalone: true}" type="text"></p>
-    <p>Select Type :
-        <select [(ngModel)]="normalUser.type" [ngModelOptions]="{standalone: true}" >
-            <option value="0">Normal User</option>
-            <option value="1">Store Owner</option>
-        </select>
-    </p>
-    <p><input type="submit" value="Sign Up" /></p>
-</form>
+<div class ="container-fluid">
+    <form (ngSubmit) = "onSubmit()">
+        <p>Name: <input [(ngModel)]="normalUser.name" [ngModelOptions]="{standalone: true}" type="text"></p>
+        <p>UserName: <input [(ngModel)]="normalUser.userName" [ngModelOptions]="{standalone: true}" type="text"></p>
+        <p>Password: <input [(ngModel)]="normalUser.passWord" [ngModelOptions]="{standalone: true}" type="password" ></p>
+        <p>Email: <input [(ngModel)]="normalUser.email" [ngModelOptions]="{standalone: true}" type="text"></p>
+        <p>Select Type :
+            <select [(ngModel)]="normalUser.type" [ngModelOptions]="{standalone: true}" >
+                <option value="0">Normal User</option>
+                <option value="1">Store Owner</option>
+            </select>
+        </p>
+        <p><input type="submit" value="Sign Up" /></p>
+    </form>
+</div>
 `,
 providers:[ServiceUserSignUp]
 })
