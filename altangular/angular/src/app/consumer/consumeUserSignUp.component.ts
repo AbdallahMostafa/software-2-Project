@@ -32,11 +32,6 @@ providers:[ServiceUserSignUp]
 })
 export class ConsumeUserSignUp implements OnInit
 {
-    /*name: any;
-    username: any;
-    password: any;
-    emial: any;
-    type: any;*/
     normalUser : User ={ name : '' ,userName:'' ,passWord:'' ,email:'' ,type:''};
     dummy: any;
     ngOnInit() {

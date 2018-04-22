@@ -9,15 +9,21 @@ import { SuggestStores } from '../interface/suggestStore';
 ({
 selector:'suggest-store',
 template:`
-<form (ngSubmit) = "onSubmit()">
-    <p>Store Name: <input [(ngModel)]="suggestStores.storeName" [ngModelOptions]="{standalone: true}" type="text"></p>
-    <p>Store Location: <input [(ngModel)]="suggestStores.storeLocation" [ngModelOptions]="{standalone: true}" type="text"></p>
-    <select [(ngModel)]="suggestStores.type" [ngModelOptions]="{standalone: true}" >
-        <option value="0">Online</option>
-        <option value="1">Offline</option>
-    </select>
-    <p><input type="submit" value="Submit" /></p>
-</form>
+<div class ="container">
+    <div class="form-group">
+        <form (ngSubmit) = "onSubmit()">
+            <p>Store Name: <input class="form-control" [(ngModel)]="suggestStores.storeName" [ngModelOptions]="{standalone: true}" type="text"></p>
+            <p>Store Location: <input class="form-control" [(ngModel)]="suggestStores.storeLocation" [ngModelOptions]="{standalone: true}" type="text"></p>
+            <p> Select Store Type:
+                <select class="form-control" [(ngModel)]="suggestStores.type" [ngModelOptions]="{standalone: true}" >
+                    <option value="0">Online</option>
+                    <option value="1">Offline</option>
+                </select>
+            </p>
+            <p><input class="form-control" type="submit" value="Submit" /></p>
+        </form>
+    </div>
+</div>
 `,
 providers:[ServiceSuggestStores]
 })

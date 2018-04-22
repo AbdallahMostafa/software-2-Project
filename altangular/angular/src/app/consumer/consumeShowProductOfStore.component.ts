@@ -9,19 +9,21 @@ import {stores} from '../interface/store';
 ({
 selector:'show-store',
 template:`
-<table border="1px">
-    <tr>
-        <td>Product Name</td>
-        <td>Product Price</td>
-        <td>Product views</td>
-    </tr>
-    <tr *ngFor="let data of reciveData; let i = index">
-        <td>{{data.productName}}</td>
-        <td>{{data.price}}</td>
-    </tr>
-    <button (click)="show_stores()">click</button>
+<div class="container">
+    <table class="table" border="1px">
+        <tr>
+            <th scope="col">Product Name</th>
+            <th scope="col">Product Price</th>
+            <th scope="col">Product views</th>
+        </tr>
+        <tr *ngFor="let data of reciveData; let i = index">
+            <td scope="row">{{data.productName}}</td>
+            <td scope="row">{{data.price}}</td>
+        </tr>
+    </table>
+    <button class="form-control" (click)="show_stores()">Show Product Of Store</button>
 
-</table>
+</div>
 `,
 providers:[ServiceShowStoresOfSystem]
 })

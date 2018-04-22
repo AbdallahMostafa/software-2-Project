@@ -41,49 +41,15 @@ public class ProductInstanceController {
         }
         return storeList;
     }
-    /*@PostMapping("/getProduct")
-    public Set<ProductInstance> showProducts()
-    {
-        Iterable<Store> storeIterable = storeRepo.findAll();
-        Set<Store> storeSet = generateSet(storeIterable);
-        Set<ProductInstance> productInstanceSet = new HashSet<ProductInstance>();
-        for (Store store : storeSet)
-        {
-
-        }
-        return storeSet;
-    }*/
-
     @CrossOrigin
     @PostMapping("/showProductOfStore")
     public Set<ProductInstance> showProduct(String storeName)
     {
        if(storeRepo.existsById(storeName))
        {
-           /*Iterable<ProductInstance> productInstanceIterable = productInstanceRepo.findAll();
-           Set<ProductInstance> productInstanceSet = generateProductSet(productInstanceIterable);
-           for( ProductInstance productInstance : productInstanceSet)*/
            Iterable<ProductInstance> storeIterable = productInstanceRepo.findAll();
            Set<ProductInstance> storeSet = generateProductSet(storeIterable);
-           for (ProductInstance store : storeSet) {
-               /*for (ProductInstance productInstance : store.getProdcutInstance())
-               {
-                   System.out.println(productInstance.getProduct().getProductName());
-               }
-               System.out.println(store.getStoreName());
-               System.out.println(store.getStoreOwner().getName());
-           }*/
-          /* System.out.println(tempstore.getProdcutInstance());
-           Set<ProductInstance> storeset = tempstore.getProdcutInstance();
-         for(ProductInstance productInstance : storeset )
-           {
-                System.out.println(productInstance.getProduct().getProductName());
-                System.out.println(productInstance.getProduct().getID());
-                System.out.println(productInstance.getProduct().getBrand());
-           }*/
-           }
            return storeSet;
-           //return productInstanceSet;*/
        }
        return null;
     }

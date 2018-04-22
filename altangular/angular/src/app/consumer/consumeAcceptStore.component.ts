@@ -9,21 +9,23 @@ import {MyAwesomeService} from '../test/test';
 ({
 selector:'accept-store',
 template:`
-<table border="1px">
-    <tr>
-        <td>Store Name</td>
-        <td>Store Location</td>
-        <td>Store Type</td>
-        <td>Store Owner</td>
-    </tr>
-    <tr *ngFor="let data of reciveData">
-        <td><a (click)="send_data(data.storeName)">{{data.storeName}}</a></td>
-        <td>{{data.storeLocation}}</td>
-        <td>{{data.type}}</td>
-        <td>{{data.storeOwner.name}}</td>
-    </tr>
-</table>
-<button (click)="show_suggested_stores()">click</button>
+<div class="container">
+    <table class="table" border="1px">
+        <tr>
+            <th scope="col">Store Name</th>
+            <th scope="col">Store Location</th>
+            <th scope="col">Store Type</th>
+            <th scope="col">Store Owner</th>
+        </tr>
+        <tr *ngFor="let data of reciveData">
+            <td scope="row"><a (click)="send_data(data.storeName)">{{data.storeName}}</a></td>
+            <td scope="row">{{data.storeLocation}}</td>
+            <td scope="row">{{data.type}}</td>
+            <td scope="row">{{data.storeOwner.name}}</td>
+        </tr>
+    </table>
+    <button class="form-control" (click)="show_suggested_stores()">Show Suggested Stores</button>
+</div>
 
 `,
 providers:[ServiceAcceptStores,MyAwesomeService]

@@ -9,7 +9,6 @@ template:`
 <a [routerLink]='["/SignUp"]'>SignUp</a>
 <a [routerLink]='["/Login"]'>User Login</a>
 `,
-
 })
 export class HomePageComponent{
 

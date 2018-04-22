@@ -9,10 +9,14 @@ import {Brand} from '../interface/brand';
 ({
 selector:'add-brand',
 template:`
-<form (ngSubmit) = "onSubmit()">
-    <p>Brand Name: <input [(ngModel)]="product.productName" [ngModelOptions]="{standalone: true}" type="text"></p>
-    <p><input type="submit" value="Submit"/></p>
-</form>
+<div class="container">
+    <div class="form-group">    
+        <form (ngSubmit) = "onSubmit()">
+            <p>Brand Name: <input class="form-control" [(ngModel)]="brand.brandName" [ngModelOptions]="{standalone: true}" type="text"></p>
+            <p><input class="form-control" type="submit" value="Submit"/></p>
+        </form>
+    </div>
+</div>
 `,
 providers:[BrandService]
 })

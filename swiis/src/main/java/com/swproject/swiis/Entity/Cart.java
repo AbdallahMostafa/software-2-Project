@@ -13,7 +13,7 @@ public class Cart {
     @OneToMany(targetEntity = ProductInstance.class,cascade = CascadeType.ALL)
     private Set<ProductInstance> productInstance;
 
-    @OneToOne
+    @OneToMany
     private NormalUser normalUser;
 
     public Cart() {

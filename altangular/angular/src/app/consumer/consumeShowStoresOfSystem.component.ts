@@ -10,18 +10,19 @@ import {MyAwesomeService} from '../test/test';
 ({
 selector:'show-store',
 template:`
-<table border="1px">
-    <tr>
-        <td>Store Name</td>
-        <td>Store Location</td>
-    </tr>
-    <tr *ngFor="let data of reciveData">
-        <td><a (click) = "navgate(data.storeName)">{{data.storeName}}</a></td>
-        <td>{{data.storeLocation}}</td>
-    </tr>
-    <button (click)="show_stores()">click</button>
-
-</table>
+<div class="container">
+    <table class="table" border="1px">
+        <tr>
+            <th scope="col">Store Name</th>
+            <th scope="col">Store Location</th>
+        </tr>
+        <tr *ngFor="let data of reciveData">
+            <td scope="row"><a (click) = "navgate(data.storeName)">{{data.storeName}}</a></td>
+            <td scope="row">{{data.storeLocation}}</td>
+        </tr>
+    </table>
+    <button class ="form-control" (click)="show_stores()">Show Stores</button>
+</div>
 `,
 providers:[ServiceShowStoresOfSystem]
 })

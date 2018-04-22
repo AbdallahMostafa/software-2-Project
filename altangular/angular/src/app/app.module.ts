@@ -24,7 +24,7 @@ import {ConsumeAdminLogin} from './consumer/consumeAdminLogin.component';
 import {ConsumeAcceptStores} from './consumer/consumeAcceptStore.component';
 import {ConsumeShowStoresOfSystem} from './consumer/consumeShowStoresOfSystem.component';
 import {ConsumeShowProductOfStore} from './consumer/consumeShowProductOfStore.component';
-import {ConsumeAddProductToSystem} from './consumer/ConsumeAddProductToSystem.component';
+import {ConsumeAddProductToSystem} from './consumer/consumeAddProductToSystem.component';
 import {ConsumeBrandService} from './consumer/consumeBrandService.component';
 
 import { SESSION_STORAGE } from 'angular-webstorage-service';

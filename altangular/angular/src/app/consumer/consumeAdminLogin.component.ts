@@ -8,9 +8,13 @@ import 'rxjs/add/operator/map';
 ({
 selector:'signin',
 template:`
-<p>User Name : <input type='text' #name> </p>
-<p>Password : <input type='text' #pass> </p>
-<button (click)="click_me(name.value, pass.value)">click</button>
+<div class="container">
+    <div class="form-group">    
+        <p> User Name : <input class="form-control" type='text' #name> </p> 
+        <p> Password : <input class="form-control" type='text' #pass> </p>
+        <button class="form-control" (click)="click_me(name.value, pass.value)">Login</button>
+    </div>
+</div>
 `,
 providers:[ServiceAdminLogin]
 })

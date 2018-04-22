@@ -10,24 +10,28 @@ import {Brand} from '../interface/brand';
 ({
 selector:'add-product',
 template:`
-<form (ngSubmit) = "onSubmit()">
-    <p>Product Name: <input [(ngModel)]="product.productName" [ngModelOptions]="{standalone: true}" type="text"></p>
-    <p>Product Category: <input [(ngModel)]="product.productCategory" [ngModelOptions]="{standalone: true}" type="text"></p>
-    <p>Product Max Price: <input [(ngModel)]="product.productPriceMax" [ngModelOptions]="{standalone: true}" type="text"></p>
-    <p>Product Min Price: <input [(ngModel)]="product.productPriceMin" [ngModelOptions]="{standalone: true}" type="text"></p>
-    <p>Product Type
-        <select [(ngModel)]="product.productType" [ngModelOptions]="{standalone: true}" >
-            <option value="0">Online</option>
-            <option value="1">Offline</option>
-        </select>
-    </p>
-    <p>Brand : 
-        <select [(ngModel)]="product.brand.brandName" [ngModelOptions]="{standalone: true}" >
-            <option *ngFor="let data of recivedData" value ="{{data.brandName}}">{{data.brandName}}</option>
-        </select>
-    </p>
-    <p><input type="submit" value="Submit"/></p>
-</form>
+<div class="container">
+    <div class="form-group">
+        <form (ngSubmit) = "onSubmit()">
+            <p>Product Name: <input class="form-control" [(ngModel)]="product.productName" [ngModelOptions]="{standalone: true}" type="text"></p>
+            <p>Product Category: <input class="form-control" [(ngModel)]="product.productCategory" [ngModelOptions]="{standalone: true}" type="text"></p>
+            <p>Product Max Price: <input class="form-control" [(ngModel)]="product.productPriceMax" [ngModelOptions]="{standalone: true}" type="text"></p>
+            <p>Product Min Price: <input  class="form-control" [(ngModel)]="product.productPriceMin" [ngModelOptions]="{standalone: true}" type="text"></p>
+            <p>Product Type
+                <select class="form-control" [(ngModel)]="product.productType" [ngModelOptions]="{standalone: true}" >
+                    <option value="0">Online</option>
+                    <option value="1">Offline</option>
+                </select>
+            </p>
+            <p>Brand : 
+                <select class="form-control" [(ngModel)]="product.brand.brandName" [ngModelOptions]="{standalone: true}" >
+                    <option *ngFor="let data of recivedData" value ="{{data.brandName}}">{{data.brandName}}</option>
+                </select>
+            </p>
+            <p><input class="form-control" type="submit" value="Submit"/></p>
+        </form>
+    </div>
+</div>
 `,
 providers:[ServiceAddProductToSystem]
 })
