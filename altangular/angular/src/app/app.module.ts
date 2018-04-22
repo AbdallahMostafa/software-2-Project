@@ -20,12 +20,13 @@ import {AdminHomePageComponent} from './Pages/adminHomePage.component';
 import {ConsumeUserSignUp} from './consumer/consumeUserSignUp.component';
 import {ConsumeUserLogin} from './consumer/consumeUserLogin.component';
 import {ConsumeSuggestStores} from './consumer/consumeSuggestStores.component';
-import{ConsumeAdminLogin} from './consumer/consumeAdminLogin.component';
+import {ConsumeAdminLogin} from './consumer/consumeAdminLogin.component';
 import {ConsumeAcceptStores} from './consumer/consumeAcceptStore.component';
 import {ConsumeShowStoresOfSystem} from './consumer/consumeShowStoresOfSystem.component';
 import {ConsumeShowProductOfStore} from './consumer/consumeShowProductOfStore.component';
 import {ConsumeAddProductToSystem} from './consumer/ConsumeAddProductToSystem.component';
 import {ConsumeBrandService} from './consumer/consumeBrandService.component';
+
 import { SESSION_STORAGE } from 'angular-webstorage-service';
 import { StorageServiceModule } from 'angular-webstorage-service';
 import { MY_AWESOME_SERVICE_STORAGE, MyAwesomeService } from './test/test';
@@ -40,7 +41,6 @@ import { MY_AWESOME_SERVICE_STORAGE, MyAwesomeService } from './test/test';
      FormsModule,
      StorageServiceModule,
      ],
-
   declarations: [
      AppComponent, 
      ConsumeAdminLogin, 

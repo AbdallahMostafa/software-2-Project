@@ -6,7 +6,6 @@ import com.swproject.swiis.Entity.Store;
 import com.swproject.swiis.Repositories.ProductInstanceRepo;
 import com.swproject.swiis.Repositories.ProductRepo;
 import com.swproject.swiis.Repositories.StoreRepo;
-import javafx.scene.layout.StackPane;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
