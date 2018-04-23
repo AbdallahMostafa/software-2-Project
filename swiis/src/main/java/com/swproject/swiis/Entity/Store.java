@@ -15,6 +15,7 @@ public class Store {
 
     @ManyToOne(cascade = CascadeType.ALL)
     private StoreOwner storeOwner;
+
     @OneToMany(targetEntity = ProductInstance.class, cascade = CascadeType.ALL)
     private Set<ProductInstance> productInstance;
 

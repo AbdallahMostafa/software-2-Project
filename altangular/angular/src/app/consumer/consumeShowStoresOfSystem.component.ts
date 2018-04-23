@@ -28,7 +28,7 @@ providers:[ServiceShowStoresOfSystem]
 })
 export class ConsumeShowStoresOfSystem
 {
-    store : Stores ={ storeName : '' ,storeLocation : '', type : '', storeOwner: ''};
+    store : Stores //={ storeName : '' ,storeLocation : '', type : '', storeOwner: ''};
 
     reciveData:any;
     Dara : any;
