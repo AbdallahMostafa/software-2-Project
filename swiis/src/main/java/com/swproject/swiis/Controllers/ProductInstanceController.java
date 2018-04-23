@@ -1,6 +1,5 @@
 package com.swproject.swiis.Controllers;
 
-import com.swproject.swiis.Entity.Product;
 import com.swproject.swiis.Entity.ProductInstance;
 import com.swproject.swiis.Entity.Store;
 import com.swproject.swiis.Repositories.ProductInstanceRepo;

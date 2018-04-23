@@ -3,7 +3,7 @@ import {ServiceShowStoresOfSystem} from '../service/serviceShowStoresOfSystem.co
 import 'rxjs/add/operator/map';
 import { componentFactoryName } from '@angular/compiler';
 import { ActivatedRoute, Router } from '@angular/router';
-import {stores} from '../interface/store';
+import {Stores} from '../interface/store';
 import {MyAwesomeService} from '../test/test';
 
 @Component
@@ -28,7 +28,7 @@ providers:[ServiceShowStoresOfSystem]
 })
 export class ConsumeShowStoresOfSystem
 {
-    store : stores ={ storeName : '' ,storeLocation : '', type : '', storeOwner: ''};
+    store : Stores ={ storeName : '' ,storeLocation : '', type : '', storeOwner: ''};
 
     reciveData:any;
     Dara : any;

@@ -1,4 +1,4 @@
-export interface stores
+export interface Stores
 {
     storeName: any;
     storeLocation: any;

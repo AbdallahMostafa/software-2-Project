@@ -1,13 +1,14 @@
 package com.swproject.swiis.Entity;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
 public abstract class User
 {
-    @OneToOne
-    private Cart cart;
+    @OneToMany(cascade = CascadeType.ALL)
+    private Set<Cart> cart;
 
     @Id
     private String userName;
@@ -71,11 +72,11 @@ public abstract class User
         this.email = email;
     }
 
-    public Cart getCart() {
+    public Set<Cart> getCart() {
         return cart;
     }
 
-    public void setCart(Cart cart) {
+    public void setCart(Set<Cart> cart) {
         this.cart = cart;
     }
 }

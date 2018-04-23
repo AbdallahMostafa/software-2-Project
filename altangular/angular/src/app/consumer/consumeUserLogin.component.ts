@@ -8,10 +8,12 @@ import {MyAwesomeService} from '../test/test';
 ({
 selector:'user-sign-in',
 template:`
-<div class="form-group">    
-    <p> User Name : <input class="form-control" type='text' #name> </p> 
-    <p> Password : <input class="form-control" type='text' #pass> </p>
-    <button class="form-control" (click)="click_me(name.value, pass.value)">Login</button>
+<div class = "container">
+    <div class="form-group">    
+        <p> User Name : <input class="form-control" type='text' #name> </p> 
+        <p> Password : <input class="form-control" type='text' #pass> </p>
+        <button class="form-control" (click)="click_me(name.value, pass.value)">Login</button>
+    </div>
 </div>
 `,
 providers:[ServiceUserLogin]

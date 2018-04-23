@@ -3,7 +3,7 @@ import {ServiceShowStoresOfSystem} from '../service/serviceShowStoresOfSystem.co
 import 'rxjs/add/operator/map';
 import { componentFactoryName } from '@angular/compiler';
 import { ActivatedRoute, Router } from '@angular/router';
-import {stores} from '../interface/store';
+import {Stores} from '../interface/store';
 
 @Component
 ({

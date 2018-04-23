@@ -3,6 +3,7 @@ package com.swproject.swiis.Controllers;
 import ch.qos.logback.classic.turbo.TurboFilter;
 import com.swproject.swiis.Entity.NormalUser;
 import com.swproject.swiis.Entity.StoreOwner;
+import com.swproject.swiis.Entity.User;
 import com.swproject.swiis.Repositories.NormalUserRepo;
 import com.swproject.swiis.Repositories.StoreOwnerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -64,32 +65,28 @@ public class UserController {
     }*/
     @CrossOrigin
     @PostMapping("/Login")
-    public boolean checkLogin(String userName, String password, HttpServletRequest session)
+    public User checkLogin(String userName, String password, HttpServletRequest session)
     {
-        boolean normalUser = false;
-        boolean storeOwner = false;
-        NormalUser tempUser;
+        User user;
         if(normalUserRepo.existsById(userName)) {
-            tempUser = normalUserRepo.findById(userName).get();
-            if (tempUser.getUserName().equals(userName) && tempUser.getPassWord().equals(password)) {
+            user = normalUserRepo.findById(userName).get();
+            if (user.getUserName().equals(userName) && user.getPassWord().equals(password)) {
                 //session.getSession().setAttribute("customer", tempUser);
-                NormalUser temp = (NormalUser) session.getSession().getAttribute("customer");
-                normalUser = true;
-                return  normalUser;
+                //NormalUser temp = (NormalUser) session.getSession().getAttribute("customer");
+                return  user;
             } else {
-                return false;
+                return null;
             }
         }
         else if(storeOwnerRepo.existsById(userName))
         {
-            tempUser = storeOwnerRepo.findById(userName).get();
-            if(tempUser.getUserName().equals(userName) && tempUser.getPassWord().equals(password)) {
-                session.getSession().setAttribute("storeOwner", tempUser);
+            user = storeOwnerRepo.findById(userName).get();
+            if(user.getUserName().equals(userName) && user.getPassWord().equals(password)) {
+                //session.getSession().setAttribute("storeOwner", tempUser);
                 //System.out.println((StoreOwner) session.getSession().getAttribute("storeOwner"));
-                storeOwner = true;
-                return storeOwner;
+                return user;
             }
         }
-        return false;
+        return null;
     }
 }
