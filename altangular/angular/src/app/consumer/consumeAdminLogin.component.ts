@@ -11,7 +11,7 @@ template:`
 <div class="container">
     <div class="form-group">    
         <p> User Name : <input class="form-control" type='text' #name> </p> 
-        <p> Password : <input class="form-control" type='text' #pass> </p>
+        <p> Password : <input class="form-control" type='password' #pass> </p>
         <button class="form-control" (click)="click_me(name.value, pass.value)">Login</button>
     </div>
 </div>
@@ -34,6 +34,9 @@ export class ConsumeAdminLogin
         this.password = password;
         this.serviceObject.get(this.username,this.password).subscribe(data =>{this.reciveData=data;});
         console.log(this.reciveData);
+        if(this.reciveData == true)
+        {
         this.router.navigate(['/LoggedIn', {  }], { relativeTo: this.route});
+        }
     }
 }

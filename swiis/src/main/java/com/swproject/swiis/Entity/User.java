@@ -1,6 +1,7 @@
 package com.swproject.swiis.Entity;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -38,6 +39,7 @@ public abstract class User
         this.passWord = "";
         this.email = "";
         this.type = "";
+        this.cart = new HashSet<Cart>();
     }
 
     public String getName() {

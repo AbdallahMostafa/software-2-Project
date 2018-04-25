@@ -2,21 +2,23 @@ import{Injectable} from '@angular/core';
 import{Http} from '@angular/http';
 import {URLSearchParams} from '@angular/http';
 import 'rxjs/add/operator/map';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {Observable} from 'rxjs/Observable';
+import {User} from '../interface/userInterFace';
 
 @Injectable()
 export class ServiceUserLogin
 {
 
-    constructor(private _http:Http)
+    private headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+    constructor(private _http:HttpClient)
     {}
 
-    get(userName: any, password:any)
+    get(user : User) : Observable <any>
     {
-        let data=new URLSearchParams();
-        data.append('userName', userName);
-        data.append('password', password);
-        console.log(data);
-        return this._http.post("http://localhost:8080/Login",data).map(reault=>reault.json());
+        
+        return this._http.post("http://localhost:8080/Login",user, {headers : this.headers});
     }
 
 }

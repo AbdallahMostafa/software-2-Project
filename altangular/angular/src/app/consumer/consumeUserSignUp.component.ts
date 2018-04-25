@@ -15,7 +15,7 @@ template:`
         <form (ngSubmit) = "onSubmit()">
                 <p>Name: <input class="form-control" [(ngModel)]="normalUser.name" [ngModelOptions]="{standalone: true}" type="text"></p>
                 <p>UserName: <input class="form-control" [(ngModel)]="normalUser.userName" [ngModelOptions]="{standalone: true}" type="text"></p>
-                <p>Password: <input class="form-control" [(ngModel)]="normalUser.passWord" [ngModelOptions]="{standalone: true}" type="password" ></p>
+                <p>Password: <input class="form-control" [(ngModel)]="normalUser.password" [ngModelOptions]="{standalone: true}" type="password" ></p>
                 <p>Email: <input class="form-control" [(ngModel)]="normalUser.email" [ngModelOptions]="{standalone: true}" type="text"></p>
                 <p>Select Type :
                     <select class="form-control" [(ngModel)]="normalUser.type" [ngModelOptions]="{standalone: true}" >

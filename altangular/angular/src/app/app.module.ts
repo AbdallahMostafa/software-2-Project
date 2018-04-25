@@ -4,6 +4,7 @@ import {HttpModule} from '@angular/http';
 import {routers} from './app.routing';
 import {HttpClientModule} from '@angular/common/http';
 import {FormsModule} from '@angular/forms';
+import {Ng2Webstorage} from 'ngx-webstorage';
 import { AppComponent }  from './app.component';
 
 import{ServiceAdminLogin} from "./service/serviceAdminLogin.component";
@@ -16,7 +17,7 @@ import {BrandService} from './service/brandService.component';
 import {HomePageComponent} from './Pages/homePage.component';
 import {StoreOwnerHomePageComponent} from './Pages/storeOwnerHomePage.component';
 import {AdminHomePageComponent} from './Pages/adminHomePage.component';
-
+import {CustomerHomePageComponent} from './Pages/customerHomePage.component';
 import {ConsumeUserSignUp} from './consumer/consumeUserSignUp.component';
 import {ConsumeUserLogin} from './consumer/consumeUserLogin.component';
 import {ConsumeSuggestStores} from './consumer/consumeSuggestStores.component';
@@ -40,6 +41,7 @@ import { MY_AWESOME_SERVICE_STORAGE, MyAwesomeService } from './test/test';
      HttpClientModule,
      FormsModule,
      StorageServiceModule,
+     Ng2Webstorage,
      ],
   declarations: [
      AppComponent, 
@@ -56,6 +58,7 @@ import { MY_AWESOME_SERVICE_STORAGE, MyAwesomeService } from './test/test';
      ConsumeAddProductToSystem,
      AdminHomePageComponent,
      ConsumeBrandService,
+     CustomerHomePageComponent,
     ],
   providers: [
     {provide : MY_AWESOME_SERVICE_STORAGE, useExisting: SESSION_STORAGE},
