@@ -14,10 +14,10 @@ public class ProductInstance {
     private long id;
 
     private double price;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Product product;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Store store;
 
     public ProductInstance(double price, Product product, Store store, Cart cart, int counter, int quantity) {

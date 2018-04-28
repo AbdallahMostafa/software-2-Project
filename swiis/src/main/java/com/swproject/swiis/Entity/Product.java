@@ -18,7 +18,7 @@ public class Product {
     @ManyToOne(cascade = CascadeType.ALL)
     Brand brand;
 
-    @OneToMany(targetEntity = ProductInstance.class, cascade = CascadeType.ALL)
+    @OneToMany(targetEntity = ProductInstance.class)
     private Set<ProductInstance> productInstance;
 
     public Brand getBrand() {
