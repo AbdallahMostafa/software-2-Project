@@ -4,7 +4,6 @@ export interface Stores
 {
     storeName: any;
     storeLocation: any;
-    type : any;
     user : User;
     productInstance : ProductInstance;  
 }

@@ -10,13 +10,13 @@ public class SuggestedStores {
     @Id
     private String storeName;
     @ManyToOne
-    private StoreOwner storeOwner;
+    private User storeOwner;
 
-    public StoreOwner getStoreOwner() {
+    public User getStoreOwner() {
         return storeOwner;
     }
 
-    public void setStoreOwner(StoreOwner storeOwner) {
+    public void setStoreOwner(User storeOwner) {
         this.storeOwner = storeOwner;
     }
 

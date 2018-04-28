@@ -53,6 +53,7 @@ public class ProductInstance {
     }
 
     public ProductInstance(){};
+
     public void setProduct(Product product) {
         this.product = product;
     }

@@ -1,20 +1,15 @@
 package com.swproject.swiis.Controllers;
 
 import com.swproject.swiis.Entity.Admin;
-import com.swproject.swiis.Entity.NormalUser;
 import com.swproject.swiis.Entity.Store;
 import com.swproject.swiis.Entity.SuggestedStores;
 import com.swproject.swiis.Repositories.AdminRepo;
 import com.swproject.swiis.Repositories.StoreRepo;
 import com.swproject.swiis.Repositories.SuggestedStoresRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @RestController
@@ -39,25 +34,16 @@ public class AdminController {
     }
 
     //-----------------------Login---------------------------
-    /*@GetMapping("/AdminLogin")
-    public String url(Model model, @ModelAttribute Admin admin)
-    {
-        model.addAttribute("admin",new Admin());
-        return "AdminLogin";
-    }
-*/
     @CrossOrigin
     @PostMapping("/AdminLogin")
-    public boolean get (String userName, String password)
+    public Admin get (@RequestBody Admin admin)
     {
-        System.out.println(userName + " " +  " " + password);
-        if(adminRepo.existsById(userName)) {
-            Admin admin = adminRepo.findById(userName).get();
-            if (admin.getUserName().equals(userName) && admin.getPassWord().equals(password))
-                return true;
+        if(adminRepo.existsById(admin.getUserName())) {
+            Admin tempadmin = adminRepo.findById(admin.getUserName()).get();
+            if (tempadmin.getUserName().equals(admin.getUserName()) && tempadmin.getPassWord().equals(admin.getPassWord()))
+                return tempadmin;
         }
-        return false;
-
+        return null;
     }
     //-------------------------Verify------------------------
     @CrossOrigin

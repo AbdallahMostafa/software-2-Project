@@ -1,77 +1,139 @@
 package com.swproject.swiis.Controllers;
 
-import com.swproject.swiis.Entity.Brand;
-import com.swproject.swiis.Entity.StoreOwner;
-import com.swproject.swiis.Entity.SuggestedStores;
-import com.swproject.swiis.Repositories.BrandRepo;
-import com.swproject.swiis.Repositories.ProductRepo;
-import com.swproject.swiis.Repositories.SuggestedStoresRepo;
+import com.swproject.swiis.Entity.*;
+import com.swproject.swiis.Repositories.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
+import java.security.ProtectionDomain;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @RestController
+
 public class StoreOwnerController {
     @Autowired
     BrandRepo brandRepo;
 
     @Autowired
-    ProductRepo productRepo;
+    ProductInstanceRepo productInstanceRepo;
 
     @Autowired
     SuggestedStoresRepo suggestedStoresRepo;
 
-    private List<Brand> generateList(Iterable<Brand> iterable)
+    @Autowired
+    StoreRepo storeRepo;
+
+    @Autowired
+    ProductRepo productRepo;
+    private Set<Product> generateList(Iterable<Product> iterable)
     {
-        List<Brand> brandList = new ArrayList<Brand>();
-        for(Brand brand : iterable)
+        Set<Product> products = new HashSet<Product>();
+        for(Product product : iterable)
         {
-            brandList.add(brand);
+            products.add(product);
         }
-        return brandList;
+        return products;
     }
-    @GetMapping("/AssignProductToStore")
+    /*@GetMapping("/AssignProductToStore")
     public  String create (Model model)
     {
         Iterable<Brand> brandIterable = brandRepo.findAll();
         List<Brand> brandList = generateList(brandIterable);
         model.addAttribute("brand", brandList);
         return "AssignProductToStore";
-    }
-    @PostMapping("/AssignProductToStore")
-    public  String show(Model model , @ModelAttribute Brand brand)
-    {
-        return "AssignProductToStore";
-    }
-
-
-    //---------------------- suggest store -----------------------
-    /*@GetMapping("/SuggestStore")
-    public String create(Model model, @ModelAttribute SuggestedStores suggested) {
-        model.addAttribute("suggested", new SuggestedStores());
-        return "SuggestStore";
     }*/
     @CrossOrigin
-    @PostMapping("/SuggestStore")
-    public boolean Add(@RequestBody SuggestedStores suggestedStores, HttpServletRequest session)
+    @PostMapping("/ShowProductOfSystem")
+    public Set<Product> showStores()
     {
-        if(!suggestedStoresRepo.existsById(suggestedStores.getStoreName()))
+        Iterable<Product> productIterable = productRepo.findAll();
+        Set<Product> products = generateList(productIterable);
+        return products;
+    }
+
+    /*@CrossOrigin
+    @PostMapping("/AssignProductToStore")
+    public  boolean AddProductToStore(@RequestBody ProductInstance productInstance , @RequestBody Store store)
+    {
+        if(storeRepo.existsById(store.getStoreName()) && productInstanceRepo.existsById(productInstance.getId()))
         {
-            System.out.println((StoreOwner) session.getSession().getAttribute("storeOwner"));
-            StoreOwner temp = (StoreOwner) session.getSession().getAttribute("storeOwner");
-            suggestedStores.setStoreOwner(temp);
-            suggestedStoresRepo.save(suggestedStores);
+            productInstance.setStore(store);
+            productInstanceRepo.save(productInstance);
+            return true;
+        }
+        return false;
+    }*/
+    @CrossOrigin
+    @PostMapping("/AssignProductToStore")
+    public  boolean AddProductToStore(@RequestBody RequstBodyObjects requstBodyObjects)
+    {
+        if(storeRepo.existsById(requstBodyObjects.getStore().getStoreName()) && productInstanceRepo.existsById(requstBodyObjects.getProductInstance().getId()))
+        {
+            requstBodyObjects.getProductInstance().setStore(requstBodyObjects.getStore());
+            productInstanceRepo.save(requstBodyObjects.getProductInstance());
+            return true;
+        }
+        return false;
+    }
+    //---------------------- suggest store -----------------------
+    @CrossOrigin
+    @PostMapping("/SuggestStore")
+    public boolean Add(@RequestBody RequstBodyObjects requstBodyObjects)
+    {
+        if(!suggestedStoresRepo.existsById(requstBodyObjects.getSuggestedStores().getStoreName()))
+        {
+            requstBodyObjects.getSuggestedStores().setStoreOwner(requstBodyObjects.getStoreOwner());
+            suggestedStoresRepo.save(requstBodyObjects.getSuggestedStores());
             return true;
         }
         else
         {
             return false;
         }
+    }
+}
+class RequstBodyObjects
+{
+
+    private User storeOwner;
+    private Store store;
+    private SuggestedStores suggestedStores;
+    private ProductInstance productInstance;
+
+    public ProductInstance getProductInstance() {
+        return productInstance;
+    }
+
+    public void setProductInstance(ProductInstance productInstance) {
+        this.productInstance = productInstance;
+    }
+
+    public SuggestedStores getSuggestedStores() {
+        return suggestedStores;
+    }
+
+    public void setSuggestedStores(SuggestedStores suggestedStores) {
+        this.suggestedStores = suggestedStores;
+    }
+    public User getStoreOwner() {
+        return storeOwner;
+    }
+
+    public void setStoreOwner(User storeOwner) {
+        this.storeOwner = storeOwner;
+    }
+
+    public Store getStore() {
+        return store;
+    }
+
+    public void setStore(Store store) {
+        this.store = store;
     }
 }

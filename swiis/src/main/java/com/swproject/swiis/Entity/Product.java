@@ -11,11 +11,8 @@ import java.util.Set;
 public class Product {
     @Id
     private String productName;
+
     private String productCategory,productType;
-    /*@Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    private long id;
-    */
 
     private double productPriceMax,productPriceMin;
     @ManyToOne
@@ -59,8 +56,6 @@ public class Product {
         this.productPriceMax= productPriceMax;
         this.brand = brand;
     }
-    //brandName
-
     public String getProductName() {
         return productName;
     }

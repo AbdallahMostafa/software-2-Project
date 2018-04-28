@@ -40,8 +40,6 @@ export class ConsumeShowStoresOfSystem
     {
         this.serviceObject.get().subscribe(data =>{this.reciveData=data;});
         //this.router.navigate(['/showProductOfStore', { }], { relativeTo: this.route})
-
-        console.log(this.reciveData);
     }
     navgate(storeName: any){
         this.serviceObject.setStoreName(storeName);

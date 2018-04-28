@@ -5,7 +5,6 @@ import 'rxjs/add/operator/map';
 ({
 selector:'store-owner-home-page',
 template:`
-<a [routerLink]='["/SuggestStore"]'>Suggest Stores</a>
 `,
 
 })

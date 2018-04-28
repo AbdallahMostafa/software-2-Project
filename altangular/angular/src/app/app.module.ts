@@ -18,6 +18,7 @@ import {HomePageComponent} from './Pages/homePage.component';
 import {StoreOwnerHomePageComponent} from './Pages/storeOwnerHomePage.component';
 import {AdminHomePageComponent} from './Pages/adminHomePage.component';
 import {CustomerHomePageComponent} from './Pages/customerHomePage.component';
+
 import {ConsumeUserSignUp} from './consumer/consumeUserSignUp.component';
 import {ConsumeUserLogin} from './consumer/consumeUserLogin.component';
 import {ConsumeSuggestStores} from './consumer/consumeSuggestStores.component';

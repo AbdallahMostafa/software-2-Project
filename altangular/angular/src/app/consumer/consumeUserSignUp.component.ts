@@ -15,14 +15,8 @@ template:`
         <form (ngSubmit) = "onSubmit()">
                 <p>Name: <input class="form-control" [(ngModel)]="normalUser.name" [ngModelOptions]="{standalone: true}" type="text"></p>
                 <p>UserName: <input class="form-control" [(ngModel)]="normalUser.userName" [ngModelOptions]="{standalone: true}" type="text"></p>
-                <p>Password: <input class="form-control" [(ngModel)]="normalUser.password" [ngModelOptions]="{standalone: true}" type="password" ></p>
+                <p>Password: <input class="form-control" [(ngModel)]="normalUser.passWord" [ngModelOptions]="{standalone: true}" type="password" ></p>
                 <p>Email: <input class="form-control" [(ngModel)]="normalUser.email" [ngModelOptions]="{standalone: true}" type="text"></p>
-                <p>Select Type :
-                    <select class="form-control" [(ngModel)]="normalUser.type" [ngModelOptions]="{standalone: true}" >
-                        <option value="0">Normal User</option>
-                        <option value="1">Store Owner</option>
-                    </select>
-                </p>
                 <p><input class="form-control" type="submit" value="Sign Up" /></p>
         </form>
     </div>
@@ -30,11 +24,19 @@ template:`
 `,
 providers:[ServiceUserSignUp]
 })
-export class ConsumeUserSignUp implements OnInit
+export class ConsumeUserSignUp implements OnInit, User
 {
-    normalUser : User// ={ name : '' ,userName:'' ,passWord:'' ,email:'' ,type:''};
-    dummy: any;
+
+    normalUser : User;
+    userName: any;
+    passWord: any;
+    name: any;
+    email : any;
+    cart : any;
+    recived :any;
     ngOnInit() {
+        this.normalUser = {name: this.name, userName: this.userName, passWord : this.passWord, email : this.email, cart : this.cart }
+
     }
     constructor(private router: Router, private route: ActivatedRoute,private serviceObject:ServiceUserSignUp)
     {
@@ -44,8 +46,10 @@ export class ConsumeUserSignUp implements OnInit
     {
         this.serviceObject.get(this.normalUser).subscribe(
             value => {
-              console.log('[POST] create Customer successfully', value);
+              console.log('[POST] create Customer successfully',this.recived =  value);
             });
+        if( this.recived == true){
         this.router.navigate(['/AcceptStore', {  }], { relativeTo: this.route});
+        }
     }
 }

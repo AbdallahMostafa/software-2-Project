@@ -4,6 +4,5 @@ export interface User{
     userName: any;
     passWord: any;
     email: any;
-    type:any;
     cart : Cart;
 }

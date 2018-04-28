@@ -45,8 +45,6 @@ export class ConsumeAcceptStores
     show_suggested_stores()
     {
         this.serviceObject.get().subscribe(data =>{this.reciveData=data;});
-        console.log(this.reciveData);
-
     }
     send_data(storeName:any)
     {

@@ -1,0 +1,27 @@
+import{Injectable} from '@angular/core';
+import{Http} from '@angular/http';
+import {URLSearchParams} from '@angular/http';
+import 'rxjs/add/operator/map';
+import {Observable} from 'rxjs/Observable';
+import {User} from '../interface/userInterFace';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
+import { HttpModule} from '@angular/http';
+import {ProductInstance} from '../interface/productInstance';
+@Injectable()
+export class ServiceAddProductToStore
+{
+
+    private headers = new HttpHeaders({'Content-Type': 'application/json'});
+
+    constructor(private http:HttpClient,private _http:Http)
+    {}
+    get_product()
+    {
+        let data=new URLSearchParams();
+        return this._http.post("http://localhost:8080/ShowProductOfSystem",data).map(reault=>reault.json());
+    }
+    send(productInstance : ProductInstance , user : User ) : Observable <any>
+    {
+        return this.http.post("http://localhost:8080/AssignProductToStore",{productInstance, user} ,{headers : this.headers});
+    }
+}

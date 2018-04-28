@@ -5,8 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class User
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class User
 {
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Cart> cart;
@@ -14,23 +14,36 @@ public abstract class User
     @Id
     private String userName;
 
-    private String name ,passWord,email,type;
+    private String name ,passWord,email;
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public User(String name, String userName, String passWord, String email, String type) {
+    public User(String name, String userName, String passWord, String email) {
         //super();
         this.name = name;
         this.userName = userName;
         this.passWord = passWord;
         this.email = email;
-        this.type = type;
+    }
+
+    @OneToMany(targetEntity = Store.class, cascade = CascadeType.ALL)
+    private Set<Store> stores;
+
+    @OneToMany(targetEntity = SuggestedStores.class, cascade = CascadeType.ALL)
+    private Set<SuggestedStores> suggestedStores;
+
+    public Set<Store> getStores() {
+        return stores;
+    }
+
+    public void setStores(Set<Store> stores) {
+        this.stores = stores;
+    }
+
+    public Set<SuggestedStores> getSuggestedStores() {
+        return suggestedStores;
+    }
+
+    public void setSuggestedStores(Set<SuggestedStores> suggestedStores) {
+        this.suggestedStores = suggestedStores;
     }
 
     public User() {
@@ -38,8 +51,9 @@ public abstract class User
         this.userName = "";
         this.passWord = "";
         this.email = "";
-        this.type = "";
         this.cart = new HashSet<Cart>();
+        this.suggestedStores = new HashSet<SuggestedStores>();
+        this.stores = new HashSet<Store>();
     }
 
     public String getName() {

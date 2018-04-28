@@ -4,6 +4,10 @@ import 'rxjs/add/operator/map';
 import { ActivatedRoute, Router } from '@angular/router'
 import {MyAwesomeService} from '../test/test';
 import { User } from '../interface/userInterFace';
+import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
+import {LocalStorage, SessionStorage} from 'ngx-webstorage';
+ 
+
 @Component
 ({
 selector:'user-sign-in',
@@ -26,34 +30,22 @@ export class ConsumeUserLogin implements OnInit, User
     userName: any;
     passWord: any;
     name: any;
-    type: any;
     email : any;
     cart : any;
-    _session : any;
-    reciveData:any;
+    @LocalStorage()
+    public reciveData:any;
     ngOnInit() {
-        this.user = {name: this.name, userName: this.userName, passWord : this.passWord, email : this.email, type: this.type, cart : this.cart }
+        this.user = {name: this.name, userName: this.userName, passWord : this.passWord, email : this.email, cart : this.cart }
     }
-    constructor(private session :MyAwesomeService, private router: Router, private route: ActivatedRoute,private serviceObject:ServiceUserLogin)
+    constructor(private storage:LocalStorageService,private session :MyAwesomeService, private router: Router, private route: ActivatedRoute,private serviceObject:ServiceUserLogin)
     {
     }
     onSubmit()
     {
         this.serviceObject.get(this.user).subscribe(data =>{this.reciveData=data;});
         console.log(this.reciveData);
-        if(this.reciveData.type =='0')
-        {
-            this.router.navigate(['/customerLogin', {  }], { relativeTo: this.route});
-
-        }
-        else if(this.reciveData.type =='1')
-        {
-            this.router.navigate(['/customerLoging', {  }], { relativeTo: this.route});
-
-        }
-        else{
-            console.log("Error in logining in!!");
-        }
+        this.storage.store('reciveData', this.reciveData);
+        this.router.navigate(['/customerLogin', {  }], { relativeTo: this.route});
         //this.router.navigate(['/SuggestStore', {  }], { relativeTo: this.route});
     }
 }

@@ -14,12 +14,12 @@ public class Store {
     private String storeName;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    private StoreOwner storeOwner;
+    private User storeOwner;
 
     @OneToMany(targetEntity = ProductInstance.class, cascade = CascadeType.ALL)
     private Set<ProductInstance> productInstance;
 
-    public Store(String storeLocation, String storeName, String type,StoreOwner storeOwner) {
+    public Store(String storeLocation, String storeName, String type,User storeOwner) {
         this.storeLocation = storeLocation;
         this.storeName = storeName;
         this.type = type;
@@ -31,7 +31,7 @@ public class Store {
         this.storeLocation = "";
         this.storeName = "";
         this.type = "";
-        this.storeOwner = new StoreOwner();
+        this.storeOwner = new User();
         this.productInstance = null;
     }
 
@@ -63,7 +63,7 @@ public class Store {
 
     public void setType(String type) { this.type = type; }
 
-    public StoreOwner getStoreOwner() { return storeOwner; }
+    public User getStoreOwner() { return storeOwner; }
 
-    public void setStoreOwner(StoreOwner storeOwner) { this.storeOwner = storeOwner; }
+    public void setStoreOwner(User storeOwner) { this.storeOwner = storeOwner; }
 }
