@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import {MyAwesomeService} from '../test/test';
 import { Http ,HttpModule} from '@angular/http';
 import {Brand} from '../interface/brand';
+import { Product } from '../interface/product';
 @Component
 ({
 selector:'add-brand',
@@ -20,15 +21,17 @@ template:`
 `,
 providers:[BrandService]
 })
-export class ConsumeBrandService implements OnInit
+export class ConsumeBrandService implements OnInit, Brand
 {
-    
-    brand : Brand = {brandName : ''}
+    brandName : any;
+    product : Product;
+
+    brand : Brand;
     ngOnInit() {
     }
     constructor(private router: Router, private route: ActivatedRoute,private serviceObject:BrandService)
     {
-        
+        this.brand = {brandName : this.brandName, product : this.product};
     }
     onSubmit()
     {

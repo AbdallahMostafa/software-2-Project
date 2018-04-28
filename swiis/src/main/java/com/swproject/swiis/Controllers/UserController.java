@@ -37,13 +37,6 @@ public class UserController {
                 return null;
             }
         }
-        else if(userRepo.existsById(user.getUserName()))
-        {
-            tempUser = userRepo.findById(user.getUserName()).get();
-            if(tempUser.getUserName().equals(user.getUserName()) && tempUser.getPassWord().equals(user.getPassWord())) {
-                return tempUser;
-            }
-        }
         return null;
     }
 }

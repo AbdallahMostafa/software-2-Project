@@ -42,7 +42,6 @@ export class ConsumeShowStoresOfSystem
         //this.router.navigate(['/showProductOfStore', { }], { relativeTo: this.route})
     }
     navgate(storeName: any){
-        this.serviceObject.setStoreName(storeName);
         this.router.navigate(['/showProductOfStore', {storeName:storeName}], { relativeTo: this.route})
     }
 }

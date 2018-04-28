@@ -14,6 +14,8 @@ import {ServiceSuggestStores} from './service/serviceSuggestStores.component';
 import {ServiceShowStoresOfSystem} from './service/serviceShowStoresOfSystem.component';
 import {ServiceAddProductToSystem} from './service/serviceAddProductToSystem.component';
 import {BrandService} from './service/brandService.component';
+import {ServiceAddProductToStore} from './service/serviceAddProductToStore.component';
+
 import {HomePageComponent} from './Pages/homePage.component';
 import {StoreOwnerHomePageComponent} from './Pages/storeOwnerHomePage.component';
 import {AdminHomePageComponent} from './Pages/adminHomePage.component';
@@ -28,6 +30,7 @@ import {ConsumeShowStoresOfSystem} from './consumer/consumeShowStoresOfSystem.co
 import {ConsumeShowProductOfStore} from './consumer/consumeShowProductOfStore.component';
 import {ConsumeAddProductToSystem} from './consumer/consumeAddProductToSystem.component';
 import {ConsumeBrandService} from './consumer/consumeBrandService.component';
+import {ConsumeAddProductToStore} from './consumer/consumeAddProductToStore.component';
 
 import { SESSION_STORAGE } from 'angular-webstorage-service';
 import { StorageServiceModule } from 'angular-webstorage-service';
@@ -60,6 +63,7 @@ import { MY_AWESOME_SERVICE_STORAGE, MyAwesomeService } from './test/test';
      AdminHomePageComponent,
      ConsumeBrandService,
      CustomerHomePageComponent,
+     ConsumeAddProductToStore,
     ],
   providers: [
     {provide : MY_AWESOME_SERVICE_STORAGE, useExisting: SESSION_STORAGE},
@@ -71,6 +75,7 @@ import { MY_AWESOME_SERVICE_STORAGE, MyAwesomeService } from './test/test';
     ServiceShowStoresOfSystem,
     ServiceAddProductToSystem,
     BrandService,
+    ServiceAddProductToStore,
   ],
   bootstrap:    [ AppComponent ]
 })

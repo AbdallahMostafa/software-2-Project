@@ -20,6 +20,15 @@ public class ProductInstance {
     @ManyToOne(cascade = CascadeType.ALL)
     private Store store;
 
+    public ProductInstance(double price, Product product, Store store, Cart cart, int counter, int quantity) {
+        this.price = price;
+        this.product = product;
+        this.store = store;
+        this.cart = cart;
+        this.counter = counter;
+        this.quantity = quantity;
+    }
+
     @ManyToOne(cascade = CascadeType.ALL)
     private Cart cart;
 
@@ -52,7 +61,14 @@ public class ProductInstance {
         this.counter = counter;
     }
 
-    public ProductInstance(){};
+    public ProductInstance(){
+        this.cart = new Cart();
+        this.counter = 0;
+        this.price = 0;
+        this.product = new Product();
+        this.store = new Store();
+        this.quantity = 0;
+    };
 
     public void setProduct(Product product) {
         this.product = product;

@@ -10,14 +10,6 @@ export class ServiceShowStoresOfSystem{
     {
         
     }
-    setStoreName(storeName :any )
-    {
-        this.storeName = storeName;
-    }
-    getStoreName():any
-    {
-        return this.storeName;
-    }
     get()
     {
         let data=new URLSearchParams();

@@ -35,12 +35,22 @@ template:`
 `,
 providers:[ServiceAddProductToSystem]
 })
-export class ConsumeAddProductToSystem implements OnInit
+export class ConsumeAddProductToSystem implements OnInit, Brand, Product
 {
-    product : Product ={productName : '' ,productCategory : '' ,productType:'' , brand: {brandName : ''}  , productPriceMax: 0, productPriceMin :0 };
-    
+
+    productName : any;
+    productCategory : any;
+    productType : any;
+    brand : Brand;
+    productPriceMax : any;
+    productPriceMin : any;
+
+    brandName : any;
+    product : Product;
+
     recivedData: any;
     ngOnInit() {
+        this.product = {productName : this.productName, productCategory : this.productCategory, productType : this.productType, brand : this.brand, productPriceMax : this.productPriceMax, productPriceMin : this.productPriceMin};
     }
     constructor(private router: Router, private route: ActivatedRoute,private serviceObject:ServiceAddProductToSystem)
     {

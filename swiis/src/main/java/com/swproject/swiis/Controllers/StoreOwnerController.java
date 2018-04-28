@@ -1,5 +1,6 @@
 package com.swproject.swiis.Controllers;
 
+import com.sun.scenario.effect.impl.prism.PrDrawable;
 import com.swproject.swiis.Entity.*;
 import com.swproject.swiis.Repositories.*;
 
@@ -31,6 +32,7 @@ public class StoreOwnerController {
 
     @Autowired
     ProductRepo productRepo;
+
     private Set<Product> generateList(Iterable<Product> iterable)
     {
         Set<Product> products = new HashSet<Product>();
@@ -49,14 +51,13 @@ public class StoreOwnerController {
         return "AssignProductToStore";
     }*/
     @CrossOrigin
-    @PostMapping("/ShowProductOfSystem")
-    public Set<Product> showStores()
+    @PostMapping("/ShowProduct")
+    public Set<Product> ShowProduct()
     {
         Iterable<Product> productIterable = productRepo.findAll();
         Set<Product> products = generateList(productIterable);
         return products;
     }
-
     /*@CrossOrigin
     @PostMapping("/AssignProductToStore")
     public  boolean AddProductToStore(@RequestBody ProductInstance productInstance , @RequestBody Store store)
@@ -71,12 +72,11 @@ public class StoreOwnerController {
     }*/
     @CrossOrigin
     @PostMapping("/AssignProductToStore")
-    public  boolean AddProductToStore(@RequestBody RequstBodyObjects requstBodyObjects)
+    public  boolean AssignProductToStore(@RequestBody RequestBodyObjects requestBodyObjects)
     {
-        if(storeRepo.existsById(requstBodyObjects.getStore().getStoreName()) && productInstanceRepo.existsById(requstBodyObjects.getProductInstance().getId()))
+        if((storeRepo.existsById(requestBodyObjects.getStore().getStoreName())) && (!productInstanceRepo.existsById(requestBodyObjects.getProductInstance().getId())))
         {
-            requstBodyObjects.getProductInstance().setStore(requstBodyObjects.getStore());
-            productInstanceRepo.save(requstBodyObjects.getProductInstance());
+            productInstanceRepo.save(requestBodyObjects.getProductInstance());
             return true;
         }
         return false;
@@ -84,12 +84,12 @@ public class StoreOwnerController {
     //---------------------- suggest store -----------------------
     @CrossOrigin
     @PostMapping("/SuggestStore")
-    public boolean Add(@RequestBody RequstBodyObjects requstBodyObjects)
+    public boolean Add(@RequestBody RequestBodyObjects requestBodyObjects)
     {
-        if(!suggestedStoresRepo.existsById(requstBodyObjects.getSuggestedStores().getStoreName()))
+        if(!suggestedStoresRepo.existsById(requestBodyObjects.getSuggestedStores().getStoreName()))
         {
-            requstBodyObjects.getSuggestedStores().setStoreOwner(requstBodyObjects.getStoreOwner());
-            suggestedStoresRepo.save(requstBodyObjects.getSuggestedStores());
+            requestBodyObjects.getSuggestedStores().setStoreOwner(requestBodyObjects.getStoreOwner());
+            suggestedStoresRepo.save(requestBodyObjects.getSuggestedStores());
             return true;
         }
         else
@@ -98,13 +98,31 @@ public class StoreOwnerController {
         }
     }
 }
-class RequstBodyObjects
+class RequestBodyObjects
 {
 
     private User storeOwner;
     private Store store;
     private SuggestedStores suggestedStores;
     private ProductInstance productInstance;
+    private Product product;
+    private Brand brand;
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
+    }
+
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
     public ProductInstance getProductInstance() {
         return productInstance;
