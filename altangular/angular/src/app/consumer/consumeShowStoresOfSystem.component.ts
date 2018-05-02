@@ -4,7 +4,6 @@ import 'rxjs/add/operator/map';
 import { componentFactoryName } from '@angular/compiler';
 import { ActivatedRoute, Router } from '@angular/router';
 import {Stores} from '../interface/store';
-import {MyAwesomeService} from '../test/test';
 
 @Component
 ({
@@ -32,7 +31,7 @@ export class ConsumeShowStoresOfSystem
 
     reciveData:any;
     Dara : any;
-    constructor(private session :MyAwesomeService,private router: Router, private route: ActivatedRoute,private serviceObject:ServiceShowStoresOfSystem)
+    constructor(private router: Router, private route: ActivatedRoute,private serviceObject:ServiceShowStoresOfSystem)
     {
 
     }
@@ -42,6 +41,6 @@ export class ConsumeShowStoresOfSystem
         //this.router.navigate(['/showProductOfStore', { }], { relativeTo: this.route})
     }
     navgate(storeName: any){
-        this.router.navigate(['/showProductOfStore', {storeName:storeName}], { relativeTo: this.route})
+        this.router.navigate(['/buy', {storeName:storeName}], { relativeTo: this.route})
     }
 }

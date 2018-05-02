@@ -3,7 +3,6 @@ import {ServiceAcceptStores} from '../service/serviceAcceptStores.component';
 import 'rxjs/add/operator/map';
 import { componentFactoryName } from '@angular/compiler';
 import { ActivatedRoute, Router } from '@angular/router';
-import {MyAwesomeService} from '../test/test';
 
 @Component
 ({
@@ -28,7 +27,7 @@ template:`
 </div>
 
 `,
-providers:[ServiceAcceptStores,MyAwesomeService]
+providers:[ServiceAcceptStores]
 })
 export class ConsumeAcceptStores
 {
@@ -38,7 +37,7 @@ export class ConsumeAcceptStores
     storeLocation:any;
     type:any;
     storeOwner:any;
-    constructor(private hhh: MyAwesomeService,private router: Router, private route: ActivatedRoute,private serviceObject:ServiceAcceptStores, private service : ServiceAcceptStores)
+    constructor(private router: Router, private route: ActivatedRoute,private serviceObject:ServiceAcceptStores, private service : ServiceAcceptStores)
     {
 
     }

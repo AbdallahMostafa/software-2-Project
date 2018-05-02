@@ -88,7 +88,7 @@ public class StoreOwnerController {
     {
         if(!suggestedStoresRepo.existsById(requestBodyObjects.getSuggestedStores().getStoreName()))
         {
-            requestBodyObjects.getSuggestedStores().setStoreOwner(requestBodyObjects.getStoreOwner());
+            requestBodyObjects.getSuggestedStores().setStoreOwner(requestBodyObjects.getUser());
             suggestedStoresRepo.save(requestBodyObjects.getSuggestedStores());
             return true;
         }
@@ -101,7 +101,7 @@ public class StoreOwnerController {
 class RequestBodyObjects
 {
 
-    private User storeOwner;
+    private User user;
     private Store store;
     private SuggestedStores suggestedStores;
     private ProductInstance productInstance;
@@ -139,12 +139,12 @@ class RequestBodyObjects
     public void setSuggestedStores(SuggestedStores suggestedStores) {
         this.suggestedStores = suggestedStores;
     }
-    public User getStoreOwner() {
-        return storeOwner;
+    public User getUser() {
+        return user;
     }
 
-    public void setStoreOwner(User storeOwner) {
-        this.storeOwner = storeOwner;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Store getStore() {

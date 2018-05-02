@@ -16,6 +16,7 @@ import {ConsumeAcceptStores} from './consumer/consumeAcceptStore.component';
 import { ConsumeAdminLogin } from './consumer/consumeAdminLogin.component';
 import {ConsumeBrandService} from './consumer/consumeBrandService.component';
 import {ConsumeAddProductToStore} from './consumer/consumeAddProductToStore.component';
+import {ConsumeBuyProdcutFromStore} from './consumer/consumeBuyProductFromStore.component';
 
 
 const app_routs: Routes = [
@@ -74,7 +75,11 @@ const app_routs: Routes = [
     {
         path : 'AssignProductToStore',
         component : ConsumeAddProductToStore
-    },  
+    },
+    {
+        path : 'buy',
+        component : ConsumeBuyProdcutFromStore
+    }  
 ]
 
 export const routers : ModuleWithProviders = RouterModule.forRoot(app_routs);

@@ -25,15 +25,10 @@ public class BrandController {
         }
         return brandSet;
     }
-    /*@GetMapping("/AddBrandToSystem")
-    public String create(Model model, @ModelAttribute Brand brand) {
-        model.addAttribute("brand", new Brand());
-        return "AddBrandToSystem";
-    }*/
 
     @CrossOrigin
     @GetMapping("/showBrands")
-    public Set<Brand> show()
+    public Set<Brand> showBrands()
     {
         Iterable<Brand> brands = brandRepo.findAll();
         Set<Brand> brandSet = generateList(brands);

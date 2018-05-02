@@ -8,13 +8,21 @@ import java.util.Set;
 public class Cart {
 
     @Id
-    int id;
-
+    private int cartId;
+    private int boughtProducts;
     @OneToMany(targetEntity = ProductInstance.class,cascade = CascadeType.ALL)
     private Set<ProductInstance> productInstance;
 
     @ManyToOne(targetEntity = User.class,cascade = CascadeType.ALL)
     private User user;
+
+    public int getBoughtProducts() {
+        return boughtProducts;
+    }
+
+    public void setBoughtProducts(int boughtProducts) {
+        this.boughtProducts = boughtProducts;
+    }
 
     public Cart() {
         this.productInstance = new HashSet<ProductInstance>();
@@ -29,12 +37,12 @@ public class Cart {
         this.user = user;
     }
 
-    public int getId() {
-        return id;
+    public int getCartId() {
+        return cartId;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setCartId(int cartId) {
+        this.cartId = cartId;
     }
 
     public Set<ProductInstance> getProductInstance() {

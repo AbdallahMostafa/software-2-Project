@@ -15,12 +15,20 @@ export class ServiceShowStoresOfSystem{
         let data=new URLSearchParams();
         return this._http.post("http://localhost:8080/showStoresOfSystem",data).map(reault=>reault.json());
     }
+    
     get_porducts(storeName : any) : any
+    {
+        // storeName = this.getStoreName();
+        let data=new URLSearchParams();
+        data.append('storeName',storeName);
+        return this._http.post("http://localhost:8080/showProductOfStore",data).map(reault=>reault.json());
+    }
+    get_porduct(storeName : any) : any
     {
         // storeName = this.getStoreName();
         console.log(storeName);
         let data=new URLSearchParams();
         data.append('storeName',storeName);
-        return this._http.post("http://localhost:8080/showProductOfStore",data).map(reault=>reault.json());
+        return this._http.post("http://localhost:8080/showProducts",data).map(reault=>reault.json());
     }
 }

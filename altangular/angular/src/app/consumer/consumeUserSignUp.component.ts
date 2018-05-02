@@ -3,7 +3,6 @@ import {ServiceUserSignUp} from '../service/serviceUserSignUp.component';
 import 'rxjs/add/operator/map';
 import { ActivatedRoute, Router } from '@angular/router'
 import { User } from '../interface/userInterFace';
-import {MyAwesomeService} from '../test/test';
 import { Http ,HttpModule} from '@angular/http';
 
 @Component

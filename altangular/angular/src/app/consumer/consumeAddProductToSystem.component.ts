@@ -3,7 +3,6 @@ import {ServiceAddProductToSystem} from '../service/serviceAddProductToSystem.co
 import 'rxjs/add/operator/map';
 import { ActivatedRoute, Router } from '@angular/router'
 import { Product } from '../interface/product';
-import {MyAwesomeService} from '../test/test';
 import { Http ,HttpModule} from '@angular/http';
 import {Brand} from '../interface/brand';
 @Component
@@ -49,21 +48,22 @@ export class ConsumeAddProductToSystem implements OnInit, Brand, Product
     product : Product;
 
     recivedData: any;
+
     ngOnInit() {
         this.product = {productName : this.productName, productCategory : this.productCategory, productType : this.productType, brand : this.brand, productPriceMax : this.productPriceMax, productPriceMin : this.productPriceMin};
+        this.brand = {brandName : this.brandName, product: this.product}
     }
     constructor(private router: Router, private route: ActivatedRoute,private serviceObject:ServiceAddProductToSystem)
     {
         this.get_brand();
     }
-
     get_brand()
     {
         this.serviceObject.get_brands().subscribe(
             value =>{
                 this.recivedData = value.json(); 
             });
-            //console.log(this.recivedData);
+            console.log(this.recivedData);
     }
     onSubmit()
     {

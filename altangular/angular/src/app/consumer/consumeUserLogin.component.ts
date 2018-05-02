@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ServiceUserLogin} from '../service/serviceUserLogin.component';
 import 'rxjs/add/operator/map';
 import { ActivatedRoute, Router } from '@angular/router'
-import {MyAwesomeService} from '../test/test';
 import { User } from '../interface/userInterFace';
 import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 import {LocalStorage, SessionStorage} from 'ngx-webstorage';
@@ -37,7 +36,7 @@ export class ConsumeUserLogin implements OnInit, User
     ngOnInit() {
         this.user = {name: this.name, userName: this.userName, passWord : this.passWord, email : this.email, cart : this.cart }
     }
-    constructor(private storage:LocalStorageService,private session :MyAwesomeService, private router: Router, private route: ActivatedRoute,private serviceObject:ServiceUserLogin)
+    constructor(private storage:LocalStorageService, private router: Router, private route: ActivatedRoute,private serviceObject:ServiceUserLogin)
     {
     }
     onSubmit()

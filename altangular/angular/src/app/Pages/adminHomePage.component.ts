@@ -6,7 +6,7 @@ import 'rxjs/add/operator/map';
 ({
 selector:'admin-home-page',
 template:`
-<a [routerLink]='["/AcceptStore"]'>AcceptStore</a>
+<a [routerLink]='["/AcceptStore"]'>Accept Store</a>
 <a [routerLink]='["/AddBrandToSystem"]'>Add Brand To System</a>
 <a [routerLink]='["/AddProductToSystem"]'>Add Product To System</a>
 `,

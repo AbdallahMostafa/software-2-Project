@@ -4,7 +4,6 @@ import 'rxjs/add/operator/map';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../interface/product';
 import { ProductInstance } from '../interface/productInstance';
-import {MyAwesomeService} from '../test/test';
 import { Http ,HttpModule} from '@angular/http';
 import {Brand} from '../interface/brand';
 import {Stores} from '../interface/store';

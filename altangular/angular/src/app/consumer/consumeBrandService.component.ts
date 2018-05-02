@@ -2,7 +2,6 @@ import {Component,OnInit} from '@angular/core';
 import {BrandService} from '../service/brandService.component';
 import 'rxjs/add/operator/map';
 import { ActivatedRoute, Router } from '@angular/router'
-import {MyAwesomeService} from '../test/test';
 import { Http ,HttpModule} from '@angular/http';
 import {Brand} from '../interface/brand';
 import { Product } from '../interface/product';

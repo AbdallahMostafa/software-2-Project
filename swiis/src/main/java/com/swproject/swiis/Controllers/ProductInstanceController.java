@@ -31,6 +31,8 @@ public class ProductInstanceController {
         }
         return storeSet;
     }
+    @CrossOrigin
+    @PostMapping("/showProducts")
     public Set<ProductInstance> generateProductSet(Iterable<ProductInstance> iterable)
     {
         Set<ProductInstance> storeList = new HashSet<ProductInstance>();
@@ -48,6 +50,10 @@ public class ProductInstanceController {
        {
            Iterable<ProductInstance> storeIterable = productInstanceRepo.findAll();
            Set<ProductInstance> storeSet = generateProductSet(storeIterable);
+           for(ProductInstance productInstance : storeSet)
+           {
+               System.out.println(productInstance.getProduct().getProductName());
+           }
            return storeSet;
        }
        return null;

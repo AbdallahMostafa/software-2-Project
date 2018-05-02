@@ -31,10 +31,10 @@ import {ConsumeShowProductOfStore} from './consumer/consumeShowProductOfStore.co
 import {ConsumeAddProductToSystem} from './consumer/consumeAddProductToSystem.component';
 import {ConsumeBrandService} from './consumer/consumeBrandService.component';
 import {ConsumeAddProductToStore} from './consumer/consumeAddProductToStore.component';
+import {ConsumeBuyProdcutFromStore} from './consumer/consumeBuyProductFromStore.component';
 
 import { SESSION_STORAGE } from 'angular-webstorage-service';
 import { StorageServiceModule } from 'angular-webstorage-service';
-import { MY_AWESOME_SERVICE_STORAGE, MyAwesomeService } from './test/test';
 
 
 @NgModule({
@@ -64,10 +64,9 @@ import { MY_AWESOME_SERVICE_STORAGE, MyAwesomeService } from './test/test';
      ConsumeBrandService,
      CustomerHomePageComponent,
      ConsumeAddProductToStore,
+     ConsumeBuyProdcutFromStore,
     ],
   providers: [
-    {provide : MY_AWESOME_SERVICE_STORAGE, useExisting: SESSION_STORAGE},
-    MyAwesomeService,
     ServiceAdminLogin,
     ServiceAcceptStores, 
     ServiceUserSignUp, 
