@@ -19,6 +19,7 @@ template:`
         <tr *ngFor="let data of reciveData; let i = index">
             <td scope="row">{{data.productName}}</td>
             <td scope="row">{{data.price}}</td>
+            <td scope="row">{{data.counter}}</td>
         </tr>
     </table>
     <button class="form-control" (click)="show_stores()">Show Product Of Store</button>

@@ -14,7 +14,7 @@ export class ServiceSuggestStores
 
     constructor(private _http:HttpClient)
     {}
-    send(suggestedStores:SuggestStores, storeOwner : User): Observable<any>{
-        return this._http.post("http://localhost:8080/SuggestStore",{suggestedStores, storeOwner},{headers : this.headers});
+    send(suggestedStores:SuggestStores, user : User): Observable<any>{
+        return this._http.post("http://localhost:8080/SuggestStore",{suggestedStores, user},{headers : this.headers});
     }
 }

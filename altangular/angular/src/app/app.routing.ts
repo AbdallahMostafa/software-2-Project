@@ -60,7 +60,7 @@ const app_routs: Routes = [
         path : 'AddBrandToSystem',
         component : ConsumeBrandService
     },
-    {
+    {   
         path : 'LoggedIn',
         component : AdminHomePageComponent
     },

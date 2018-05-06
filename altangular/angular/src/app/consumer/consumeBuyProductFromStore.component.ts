@@ -16,12 +16,14 @@ import { ServiceShowStoresOfSystem } from '../service/serviceShowStoresOfSystem.
 selector:'show-store',
 template:`
 <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="./JS/button.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+  <script src="./app/JS/button.js"></script>
 <div class="container">
     <div *ngFor="let data of reciveData">
         <p>{{data.product.productName}}</p>
+        <p>{{data.price}}</p>
+        <p>{{data.counter}}</p>
         <div class="row" >
             <div class="col-lg-2">
                 <div class="input-group">
@@ -39,8 +41,10 @@ template:`
                 </div>
             </div>
         </div>
+        
     </div>
 </div>
+
 `,
 providers:[ServiceBuyProductFromStore]
 })
