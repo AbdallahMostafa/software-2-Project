@@ -8,10 +8,8 @@ import java.util.Set;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class User
 {
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany
     private Set<Cart> cart;
-
-
 
     @Id
     private String userName;
@@ -26,10 +24,10 @@ public class User
         this.email = email;
     }
 
-    @OneToMany(targetEntity = Store.class, cascade = CascadeType.ALL)
+    @OneToMany
     private Set<Store> stores;
 
-    @OneToMany(targetEntity = SuggestedStores.class, cascade = CascadeType.ALL)
+    @OneToMany
     private Set<SuggestedStores> suggestedStores;
 
     public Set<Store> getStores() {

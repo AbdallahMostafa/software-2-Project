@@ -13,10 +13,10 @@ public class Store {
     @Id
     private String storeName;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private User storeOwner;
 
-    @OneToMany(targetEntity = ProductInstance.class)
+    @OneToMany
     private Set<ProductInstance> productInstance;
 
     public Store(String storeLocation, String storeName, String type,User storeOwner) {

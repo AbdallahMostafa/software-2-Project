@@ -15,10 +15,10 @@ public class Product {
     private String productCategory,productType;
 
     private double productPriceMax,productPriceMin;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     Brand brand;
 
-    @OneToMany(targetEntity = ProductInstance.class)
+    @OneToMany
     private Set<ProductInstance> productInstance;
 
     public Brand getBrand() {

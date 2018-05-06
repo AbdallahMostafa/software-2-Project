@@ -29,7 +29,7 @@ public class ProductInstance {
         this.quantity = quantity;
     }
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Cart cart;
 
     private int counter, quantity;

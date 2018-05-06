@@ -9,6 +9,7 @@ public class SuggestedStores {
     private String storeLocation,type;
     @Id
     private String storeName;
+
     @ManyToOne
     private User storeOwner;
 

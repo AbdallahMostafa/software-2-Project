@@ -10,10 +10,11 @@ public class Cart {
     @Id
     private int cartId;
     private int boughtProducts;
-    @OneToMany(targetEntity = ProductInstance.class,cascade = CascadeType.ALL)
+    @OneToMany
     private Set<ProductInstance> productInstance;
 
-    @ManyToOne(targetEntity = User.class,cascade = CascadeType.ALL)
+
+    @ManyToOne
     private User user;
 
     public int getBoughtProducts() {

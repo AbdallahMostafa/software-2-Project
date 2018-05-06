@@ -32,6 +32,7 @@ export class ConsumeUserLogin implements OnInit, User
     email : any;
     cart : any;
     collaborator : any;
+    
     @LocalStorage()
     public reciveData:any;
     ngOnInit() {
