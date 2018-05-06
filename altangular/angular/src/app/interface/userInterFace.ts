@@ -5,4 +5,5 @@ export interface User{
     passWord: any;
     email: any;
     cart : Cart;
+    collaborator:any;
 }

@@ -33,8 +33,9 @@ export class ConsumeUserSignUp implements OnInit, User
     email : any;
     cart : any;
     recived :any;
+    collaborator : any;
     ngOnInit() {
-        this.normalUser = {name: this.name, userName: this.userName, passWord : this.passWord, email : this.email, cart : this.cart }
+        this.normalUser = {name: this.name, userName: this.userName, passWord : this.passWord, email : this.email, cart : this.cart, collaborator : this.collaborator }
 
     }
     constructor(private router: Router, private route: ActivatedRoute,private serviceObject:ServiceUserSignUp)

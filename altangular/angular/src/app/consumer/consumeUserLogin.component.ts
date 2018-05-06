@@ -31,10 +31,11 @@ export class ConsumeUserLogin implements OnInit, User
     name: any;
     email : any;
     cart : any;
+    collaborator : any;
     @LocalStorage()
     public reciveData:any;
     ngOnInit() {
-        this.user = {name: this.name, userName: this.userName, passWord : this.passWord, email : this.email, cart : this.cart }
+        this.user = {name: this.name, userName: this.userName, passWord : this.passWord, email : this.email, cart : this.cart, collaborator : this.collaborator}
     }
     constructor(private storage:LocalStorageService, private router: Router, private route: ActivatedRoute,private serviceObject:ServiceUserLogin)
     {

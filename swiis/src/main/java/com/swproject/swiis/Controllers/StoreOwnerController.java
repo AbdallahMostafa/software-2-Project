@@ -18,6 +18,9 @@ import java.util.Set;
 @RestController
 
 public class StoreOwnerController {
+
+    //-----------------------Repository-----------------------
+
     @Autowired
     BrandRepo brandRepo;
 
@@ -33,6 +36,9 @@ public class StoreOwnerController {
     @Autowired
     ProductRepo productRepo;
 
+    @Autowired
+    UserRepo userRepo;
+
     private Set<Product> generateList(Iterable<Product> iterable)
     {
         Set<Product> products = new HashSet<Product>();
@@ -42,14 +48,7 @@ public class StoreOwnerController {
         }
         return products;
     }
-    /*@GetMapping("/AssignProductToStore")
-    public  String create (Model model)
-    {
-        Iterable<Brand> brandIterable = brandRepo.findAll();
-        List<Brand> brandList = generateList(brandIterable);
-        model.addAttribute("brand", brandList);
-        return "AssignProductToStore";
-    }*/
+    //----------------------Add Product to store------------------------
     @CrossOrigin
     @PostMapping("/ShowProduct")
     public Set<Product> ShowProduct()
@@ -58,18 +57,6 @@ public class StoreOwnerController {
         Set<Product> products = generateList(productIterable);
         return products;
     }
-    /*@CrossOrigin
-    @PostMapping("/AssignProductToStore")
-    public  boolean AddProductToStore(@RequestBody ProductInstance productInstance , @RequestBody Store store)
-    {
-        if(storeRepo.existsById(store.getStoreName()) && productInstanceRepo.existsById(productInstance.getId()))
-        {
-            productInstance.setStore(store);
-            productInstanceRepo.save(productInstance);
-            return true;
-        }
-        return false;
-    }*/
     @CrossOrigin
     @PostMapping("/AssignProductToStore")
     public  boolean AssignProductToStore(@RequestBody RequestBodyObjects requestBodyObjects)
@@ -81,6 +68,7 @@ public class StoreOwnerController {
         }
         return false;
     }
+
     //---------------------- suggest store -----------------------
     @CrossOrigin
     @PostMapping("/SuggestStore")
@@ -97,6 +85,24 @@ public class StoreOwnerController {
             return false;
         }
     }
+    //----------------------Add Collaborators to store------------------------
+    @CrossOrigin
+    @PostMapping("/AddCollaborators")
+    public boolean AddCollaborators(@RequestBody RequestBodyObjects requestBodyObjects)
+    {
+        if(userRepo.existsById(requestBodyObjects.getCollaborator()))
+        {
+            User tempUser = userRepo.findById(requestBodyObjects.getCollaborator()).get();
+            if(tempUser.getUserName().equals(requestBodyObjects.getCollaborator()))
+            {
+                for(Store store : requestBodyObjects.getUser().getStores())
+                {
+
+                }
+            }
+        }
+        return false;
+    }
 }
 class RequestBodyObjects
 {
@@ -107,6 +113,16 @@ class RequestBodyObjects
     private ProductInstance productInstance;
     private Product product;
     private Brand brand;
+
+    private String collaborator;
+
+    public String getCollaborator() {
+        return collaborator;
+    }
+
+    public void setCollaborator(String collaborator) {
+        this.collaborator = collaborator;
+    }
 
     public Brand getBrand() {
         return brand;

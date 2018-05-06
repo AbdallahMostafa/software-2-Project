@@ -37,7 +37,8 @@ export class ConsumeSuggestStores implements OnInit, SuggestStores,User
     name: any;
     email : any;
     cart : any;
-    
+    collaborator: any;
+
     suggestedStores : SuggestStores;
     storeName: any;
     storeLocation: any;
@@ -46,7 +47,7 @@ export class ConsumeSuggestStores implements OnInit, SuggestStores,User
     reciveData:any;
     sendData: any;
     ngOnInit(){
-        this.user = {name: this.name, userName: this.userName, passWord : this.passWord, email : this.email, cart : this.cart }
+        this.user = {name: this.name, userName: this.userName, passWord : this.passWord, email : this.email, cart : this.cart, collaborator : this.collaborator }
         this.suggestedStores = {storeLocation : this.storeLocation, storeName : this.storeName, type : this.type};
     }
     constructor(private storage:LocalStorageService,private router: Router, private route: ActivatedRoute,private serviceObject:ServiceSuggestStores, private service : ServiceSuggestStores)

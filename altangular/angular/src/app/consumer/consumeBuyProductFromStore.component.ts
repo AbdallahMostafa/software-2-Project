@@ -56,7 +56,7 @@ export class ConsumeBuyProdcutFromStore implements OnInit , User, Product, Cart,
     passWord: any;
     name: any;
     email : any;
-
+    collaborator : any;
 
     id : any;
     price : any;
@@ -79,7 +79,7 @@ export class ConsumeBuyProdcutFromStore implements OnInit , User, Product, Cart,
     productPriceMin : any;
 
     ngOnInit() {
-        this.user = {name: this.name, userName: this.userName, passWord : this.passWord, email : this.email, cart : this.cart }
+        this.user = {name: this.name, userName: this.userName, passWord : this.passWord, email : this.email, cart : this.cart, collaborator :this.collaborator }
         this.cart = {boughtProducts : this.boughtProducts, productInstance : this.productInstance, user : this.user, cartId : this.cartId}
         this.productInstance = {cart : this.cart, price : this.price, counter : this.counter, id : this.id, quantity : this.quantity, product : this.product, store: this.store}
         this.product = {brand : this.brand, productCategory : this.productCategory, productName : this.productName, productPriceMax : this.productPriceMax, productPriceMin :this.productPriceMin, productType : this.productType}

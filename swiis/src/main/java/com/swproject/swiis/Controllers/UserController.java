@@ -44,7 +44,7 @@ public class UserController {
         return null;
     }
     //------------------------- Buy ---------------------------------------
-    @CrossOrigin
+    /*@CrossOrigin
     @PostMapping("/buy")
     public lll buyProduct(@RequestBody ProductInstance productInstance , int Quantity){
         if(Quantity <= productInstance.getQuantity()){
@@ -52,5 +52,5 @@ public class UserController {
             toCart.setQuantity(Quantity);
 
         }
-    }
+    }*/
 }

@@ -11,6 +11,8 @@ public class User
     @OneToMany(cascade = CascadeType.ALL)
     private Set<Cart> cart;
 
+
+
     @Id
     private String userName;
 
@@ -48,6 +50,7 @@ public class User
 
     public User() {
         this.name = "";
+
         this.userName = "";
         this.passWord = "";
         this.email = "";

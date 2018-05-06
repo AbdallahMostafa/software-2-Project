@@ -27,7 +27,7 @@ public class BrandController {
     }
 
     @CrossOrigin
-    @PostMapping("/showBrands")
+    @GetMapping("/showBrands")
     public Set<Brand> showBrands()
     {
         Iterable<Brand> brands = brandRepo.findAll();

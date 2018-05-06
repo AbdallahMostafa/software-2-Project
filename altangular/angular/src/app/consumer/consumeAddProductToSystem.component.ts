@@ -23,7 +23,7 @@ template:`
                 </select>
             </p>
             <p>Brand : 
-                <select class="form-control" [(ngModel)]="product.brand.brandName" [ngModelOptions]="{standalone: true}" >
+                <select class="form-control" [(ngModel)]="brand.brandName" [ngModelOptions]="{standalone: true}" >
                     <option *ngFor="let data of recivedData" value ="{{data.brandName}}">{{data.brandName}}</option>
                 </select>
             </p>
