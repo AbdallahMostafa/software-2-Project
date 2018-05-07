@@ -3,11 +3,13 @@ package com.swproject.swiis.Entity;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "product")
 public class Product {
     @Id
     private String productName;
@@ -15,10 +17,12 @@ public class Product {
     private String productCategory,productType;
 
     private double productPriceMax,productPriceMin;
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @JoinColumn(name = "brand_id")
     Brand brand;
 
-    @OneToMany
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<ProductInstance> productInstance;
 
     public Brand getBrand() {
@@ -36,8 +40,6 @@ public class Product {
     public void setProductInstance(Set<ProductInstance> productInstance) {
         this.productInstance = productInstance;
     }
-
-
 
     public Product()
     {

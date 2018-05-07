@@ -35,6 +35,7 @@ public class UserController {
         }
         return storeSet;
     }
+
     public Set<SuggestedStores> getSuggestedStores(Iterable<SuggestedStores> storeIterable)
     {
         Set<SuggestedStores> storeSet = new HashSet<SuggestedStores>();
@@ -61,14 +62,12 @@ public class UserController {
     @PostMapping("/Login")
     public User checkLogin(@RequestBody User user)
     {
-        User tempUser = new User();
+        User tempUser;
         if(userRepo.existsById(user.getUserName()))
         {
             tempUser = userRepo.findById(user.getUserName()).get();
-            System.out.println(tempUser.getUserName().equals(user.getUserName()) && tempUser.getPassWord().equals(user.getPassWord()));
             if (tempUser.getUserName().equals(user.getUserName()) && tempUser.getPassWord().equals(user.getPassWord()))
             {
-
                 Iterable<Store> iterable = storeRepo.findAll();
                 Set<Store> storeSet = getStores(iterable);
                 for(Store store : storeSet)
@@ -88,19 +87,11 @@ public class UserController {
                         tempUser.getSuggestedStores().add(suggestedStores);
                     }
                 }
+
                 return  tempUser;
             }
         }
         return null;
     }
     //------------------------- Buy ---------------------------------------
-    /*@CrossOrigin
-    @PostMapping("/buy")
-    public lll buyProduct(@RequestBody ProductInstance productInstance , int Quantity){
-        if(Quantity <= productInstance.getQuantity()){
-            ProductInstance toCart = productInstance;
-            toCart.setQuantity(Quantity);
-
-        }
-    }*/
 }

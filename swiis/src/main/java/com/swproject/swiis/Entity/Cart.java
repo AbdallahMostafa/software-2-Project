@@ -5,16 +5,19 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "cart")
 public class Cart {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int cartId;
     private int boughtProducts;
-    @OneToMany
+    @OneToMany(mappedBy = "cart",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<ProductInstance> productInstance;
 
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "userName_id")
     private User user;
 
     public int getBoughtProducts() {

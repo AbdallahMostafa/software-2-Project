@@ -6,11 +6,9 @@ import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@Table(name = "user")
 public class User
 {
-    @OneToMany
-    private Set<Cart> cart;
-
     @Id
     private String userName;
 
@@ -23,11 +21,13 @@ public class User
         this.passWord = passWord;
         this.email = email;
     }
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set<Cart> cart;
 
-    @OneToMany
+    @OneToMany(mappedBy = "storeOwner",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<Store> stores;
 
-    @OneToMany
+    @OneToMany( mappedBy = "storeOwner",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<SuggestedStores> suggestedStores;
 
     public Set<Store> getStores() {

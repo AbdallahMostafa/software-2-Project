@@ -29,12 +29,13 @@ public class ProductController {
         if(!productRepo.existsById(product.getProductName()))
         {
             if(product.getProductType().equals("0")) {
-                System.out.println(product.getBrand().getBrandName());
+                product.setBrand(product.getBrand());
                 productRepo.save(product);
                 return true;
             }
             else {
                 productRepo.save(product);
+                return true;
             }
         }
         return false;

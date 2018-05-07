@@ -3,19 +3,29 @@ package com.swproject.swiis.Entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "brand")
 public class Brand {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    private int brandId;
+
     private String brandName;
-    @OneToMany(targetEntity = Product.class, cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "brand",cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
     private Set<Product> products;
+
+    public int getBrandId() {
+        return brandId;
+    }
+
+    public void setBrandId(int brandId) {
+        this.brandId = brandId;
+    }
 
     public Brand() {
         brandName="";

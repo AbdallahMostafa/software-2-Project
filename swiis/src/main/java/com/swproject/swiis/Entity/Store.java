@@ -13,10 +13,11 @@ public class Store {
     @Id
     private String storeName;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "userName_id")
     private User storeOwner;
 
-    @OneToMany
+    @OneToMany(mappedBy = "store",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<ProductInstance> productInstance;
 
     public Store(String storeLocation, String storeName, String type,User storeOwner) {

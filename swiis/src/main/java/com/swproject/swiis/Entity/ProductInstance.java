@@ -7,18 +7,26 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import javax.persistence.*;
 
 @Entity
+@Table(name = "productInstance")
 public class ProductInstance {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;
-
     private double price;
-    @ManyToOne
+    private int counter, quantity;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "product_id")
     private Product product;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "store_id")
     private Store store;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
 
     public ProductInstance(double price, Product product, Store store, Cart cart, int counter, int quantity) {
         this.price = price;
@@ -29,10 +37,9 @@ public class ProductInstance {
         this.quantity = quantity;
     }
 
-    @ManyToOne
-    private Cart cart;
 
-    private int counter, quantity;
+
+
 
     public void setId(long id) {
         this.id = id;

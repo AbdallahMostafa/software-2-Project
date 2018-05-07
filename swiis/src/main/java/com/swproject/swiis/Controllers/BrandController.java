@@ -39,7 +39,7 @@ public class BrandController {
     @PostMapping("/AddBrandToSystem")
     public boolean Add(@RequestBody Brand brand)
     {
-        if(!brandRepo.existsById(brand.getBrandName()))
+        if(!brandRepo.existsById(brand.getBrandId()))
         {
             brandRepo.save(brand);
             return true;

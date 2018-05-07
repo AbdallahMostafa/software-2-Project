@@ -24,13 +24,13 @@ export class ConsumeBrandService implements OnInit, Brand
 {
     brandName : any;
     product : Product;
-
+    brandId : any;
     brand : Brand;
     ngOnInit() {
     }
     constructor(private router: Router, private route: ActivatedRoute,private serviceObject:BrandService)
     {
-        this.brand = {brandName : this.brandName, product : this.product};
+        this.brand = {brandName : this.brandName, product : this.product, brandId : this.brandId};
     }
     onSubmit()
     {

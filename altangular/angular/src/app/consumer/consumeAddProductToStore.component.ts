@@ -77,6 +77,7 @@ export class ConsumeAddProductToStore implements OnInit,ProductInstance, Product
     user : User;
 
     brandName : any;
+    brandId : any;
 
     productInstance : ProductInstance;
 
@@ -86,7 +87,7 @@ export class ConsumeAddProductToStore implements OnInit,ProductInstance, Product
         this.product = {productName : this.productName, productCategory : this.productCategory, productType : this.productType, brand : this.brand, productPriceMax : this.productPriceMax, productPriceMin : this.productPriceMin};
         this.store = {productInstance : this.productInstance, storeLocation : this.storeLocation, storeName : this.storeName, user : this.user};
         this.productInstance = {id : this.id, price : this.price, product : this.product, store : this.store, cart : this.cart, counter : this.counter, quantity : this.quantity };
-        this.brand = {brandName : this.brandName, product : this.product};
+        this.brand = {brandName : this.brandName, product : this.product, brandId : this.brandId};
         
         this.get_stores();
         this.get_product();

@@ -32,7 +32,7 @@ export class ConsumeUserLogin implements OnInit, User
     email : any;
     cart : any;
     collaborator : any;
-    
+
     @LocalStorage()
     public reciveData:any;
     ngOnInit() {
@@ -43,10 +43,14 @@ export class ConsumeUserLogin implements OnInit, User
     }
     onSubmit()
     {
-        this.serviceObject.get(this.user).subscribe(data =>{this.reciveData=data;});
+        this.serviceObject.get(this.user).subscribe(
+            data =>{
+                this.reciveData=data;
+                console.log(data);
+            });
         console.log(this.reciveData);
         this.storage.store('reciveData', this.reciveData);
-        this.router.navigate(['/customerLogin', {  }], { relativeTo: this.route});
+        //this.router.navigate(['/customerLogin', {  }], { relativeTo: this.route});
         //this.router.navigate(['/SuggestStore', {  }], { relativeTo: this.route});
     }
 }

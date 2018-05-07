@@ -1,16 +1,16 @@
 package com.swproject.swiis.Entity;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "suggestedStores")
 public class SuggestedStores {
     private String storeLocation,type;
     @Id
     private String storeName;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "userName_id")
     private User storeOwner;
 
     public User getStoreOwner() {
