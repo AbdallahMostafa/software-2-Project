@@ -48,9 +48,14 @@ export class ConsumeUserLogin implements OnInit, User
                 this.reciveData=data;
                 console.log(data);
             });
-        console.log(this.reciveData);
+     //console.log(this.reciveData);
         this.storage.store('reciveData', this.reciveData);
-        //this.router.navigate(['/customerLogin', {  }], { relativeTo: this.route});
+
+        if(this.reciveData.userName==this.user.userName && this.reciveData.passWord==this.user.passWord)
+        {
+            console.log("heey");
+            this.router.navigate(['/showStoresOfSystem', {  }], { relativeTo: this.route});
+        }
         //this.router.navigate(['/SuggestStore', {  }], { relativeTo: this.route});
     }
 }
