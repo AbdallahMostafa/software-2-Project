@@ -7,17 +7,18 @@ import java.util.Set;
 
 @Entity
 @Table(name = "store")
-
 public class Store {
     private String storeLocation,type;
     @Id
     private String storeName;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
+    @ManyToOne
     @JoinColumn(name = "userName_id")
     private User storeOwner;
 
-    @OneToMany(mappedBy = "store",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(mappedBy = "store", cascade = CascadeType.ALL ,fetch = FetchType.EAGER)
     private Set<ProductInstance> productInstance;
 
     public Store(String storeLocation, String storeName, String type,User storeOwner) {

@@ -1,8 +1,6 @@
 package com.swproject.swiis.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -11,10 +9,6 @@ import java.util.Set;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "user")
-@JsonIdentityInfo(
-        scope = User.class,
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "userName")
 public class User
 {
     @Id
@@ -29,13 +23,16 @@ public class User
         this.passWord = passWord;
         this.email = email;
     }
-    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Cart> cart;
 
-    @OneToMany(mappedBy = "storeOwner",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(mappedBy = "storeOwner",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<Store> stores;
 
-    @OneToMany( mappedBy = "storeOwner",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(mappedBy = "storeOwner",cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<SuggestedStores> suggestedStores;
 
     public Set<Store> getStores() {

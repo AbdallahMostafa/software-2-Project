@@ -49,7 +49,7 @@ export class ConsumeUserLogin implements OnInit, User
                 console.log(data);
             });
         console.log(this.reciveData);
-        this.storage.store('reciveData', this.reciveData);
+        this.storage.store('reciveData', this.reciveData);  
         //this.router.navigate(['/customerLogin', {  }], { relativeTo: this.route});
         //this.router.navigate(['/SuggestStore', {  }], { relativeTo: this.route});
     }

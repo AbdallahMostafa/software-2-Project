@@ -1,8 +1,6 @@
 package com.swproject.swiis.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -10,21 +8,18 @@ import java.util.Set;
 
 @Entity
 @Table(name = "cart")
-@JsonIdentityInfo(
-        scope = Cart.class,
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "cartId")
 public class Cart {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private int cartId;
 
     private int boughtProducts;
 
-    @OneToMany(mappedBy = "cart",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(mappedBy = "cart",fetch = FetchType.EAGER)
     private Set<ProductInstance> productInstance;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "userName_id")
     private User user;
@@ -39,7 +34,6 @@ public class Cart {
 
     public Cart() {
         this.productInstance = new HashSet<ProductInstance>();
-
     }
 
     public Cart(int boughtProducts, Set<ProductInstance> productInstance, User user) {

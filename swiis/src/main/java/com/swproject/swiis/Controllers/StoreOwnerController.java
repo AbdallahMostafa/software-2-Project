@@ -64,8 +64,6 @@ public class StoreOwnerController {
     @PostMapping("/AssignProductToStore")
     public  boolean AssignProductToStore(@RequestBody RequestBodyObjects requestBodyObjects)
     {
-        System.out.println(requestBodyObjects.getStore().getStoreName());
-        System.out.println(requestBodyObjects.getProduct().getProductName());
         if((storeRepo.existsById(requestBodyObjects.getStore().getStoreName())) && (!productInstanceRepo.existsById(requestBodyObjects.getProductInstance().getId())))
         {
             requestBodyObjects.getProductInstance().setCart(null);
