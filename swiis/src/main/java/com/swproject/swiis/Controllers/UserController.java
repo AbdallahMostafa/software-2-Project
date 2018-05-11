@@ -87,7 +87,6 @@ public class UserController {
                         tempUser.getSuggestedStores().add(suggestedStores);
                     }
                 }
-
                 return  tempUser;
             }
         }

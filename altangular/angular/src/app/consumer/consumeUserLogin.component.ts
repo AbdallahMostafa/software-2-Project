@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router'
 import { User } from '../interface/userInterFace';
 import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 import {LocalStorage, SessionStorage} from 'ngx-webstorage';
- 
+
 
 @Component
 ({

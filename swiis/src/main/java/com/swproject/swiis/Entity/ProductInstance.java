@@ -6,10 +6,6 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "productInstance")
-@JsonIdentityInfo(
-        scope = ProductInstance.class,
-        generator = ObjectIdGenerators.PropertyGenerator.class,
-        property = "id")
 public class ProductInstance {
 
     @Id
@@ -18,14 +14,17 @@ public class ProductInstance {
     private double price;
     private int counter, quantity;
 
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "product_id")
     private Product product;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "store_id")
     private Store store;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "cart_id")
     private Cart cart;

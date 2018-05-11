@@ -28,7 +28,7 @@ public class StoreController {
         return storeList;
     }
     @CrossOrigin
-    @PostMapping("/showStoresOfSystem")
+    @GetMapping("/showStoresOfSystem")
     public Set<Store> showStores()
     {
         Iterable<Store > storeIterable = storeRepo.findAll();

@@ -46,15 +46,16 @@ public class ProductInstanceController {
     @PostMapping("/showProductOfStore")
     public Set<ProductInstance> showProduct(String storeName)
     {
+
        if(storeRepo.existsById(storeName))
        {
-           Iterable<ProductInstance> storeIterable = productInstanceRepo.findAll();
-           Set<ProductInstance> storeSet = generateProductSet(storeIterable);
-           for(ProductInstance productInstance : storeSet)
+           Iterable<ProductInstance> productInstanceIterable = productInstanceRepo.findAll();
+           Set<ProductInstance> productInstanceSet = generateProductSet(productInstanceIterable);
+           for(ProductInstance productInstance : productInstanceSet)
            {
                System.out.println(productInstance.getProduct().getProductName());
            }
-           return storeSet;
+           return productInstanceSet;
        }
        return null;
     }

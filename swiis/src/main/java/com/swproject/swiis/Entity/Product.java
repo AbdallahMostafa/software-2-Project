@@ -16,11 +16,13 @@ public class Product {
 
     private double productPriceMax,productPriceMin;
 
+    @JsonIgnore
     @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "brand_id")
     Brand brand;
 
-    @OneToMany(mappedBy = "product",fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<ProductInstance> productInstance;
 
     public Brand getBrand() {
