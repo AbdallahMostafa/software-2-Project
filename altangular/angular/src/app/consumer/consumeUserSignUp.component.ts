@@ -48,12 +48,10 @@ export class ConsumeUserSignUp implements OnInit, User
             value => {
               console.log('[POST] create Customer successfully',this.recived =  value);
             });
-        if( this.recived != null){
-            console.log("heeee");
+        console.log(this.recived);
+        if( this.recived ==true){
         this.router.navigate(['/Login', {  }], { relativeTo: this.route});
         }
-        else{
-            console.log("llleeehehehe");
-        }
+        
     }
 }

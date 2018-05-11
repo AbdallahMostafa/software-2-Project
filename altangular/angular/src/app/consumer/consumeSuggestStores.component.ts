@@ -62,6 +62,7 @@ export class ConsumeSuggestStores implements OnInit, SuggestStores,User
             value => {
               console.log('[POST] create Customer successfully', value);
             });
+        console.log(this.reciveData);
         this.router.navigate(['/AcceptStore', {  }], { relativeTo: this.route})
     }
 }
