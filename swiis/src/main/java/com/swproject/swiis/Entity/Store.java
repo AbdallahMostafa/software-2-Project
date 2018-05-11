@@ -1,13 +1,13 @@
 package com.swproject.swiis.Entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
+@Table(name = "store")
+
 public class Store {
     private String storeLocation,type;
     @Id

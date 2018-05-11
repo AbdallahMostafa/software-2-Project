@@ -1,7 +1,9 @@
 package com.swproject.swiis.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -9,6 +11,10 @@ import java.util.Set;
 
 @Entity
 @Table(name = "brand")
+@JsonIdentityInfo(
+        scope = Brand.class,
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "brandId")
 public class Brand {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
@@ -16,7 +22,8 @@ public class Brand {
 
     private String brandName;
 
-    @OneToMany(mappedBy = "brand",cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @JsonIgnore
+    @OneToMany(mappedBy = "brand",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     private Set<Product> products;
 
     public int getBrandId() {
@@ -51,5 +58,14 @@ public class Brand {
 
     public void setProducts(Set<Product> products) {
         this.products = products;
+    }
+
+    @Override
+    public String toString() {
+        return "Brand{" +
+                "brandId=" + brandId +
+                ", brandName='" + brandName + '\'' +
+                ", products=" + products +
+                '}';
     }
 }

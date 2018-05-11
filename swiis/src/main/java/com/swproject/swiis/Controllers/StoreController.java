@@ -14,6 +14,7 @@ import java.util.Set;
 @RestController
 public class StoreController {
 
+    //-----------------------Repository-----------------------
     @Autowired
     StoreRepo storeRepo;
 
@@ -32,33 +33,6 @@ public class StoreController {
     {
         Iterable<Store > storeIterable = storeRepo.findAll();
         Set<Store> storeSet = generateSet(storeIterable);
-        /*for(int i = 0; i < suggestedStoresList.size(); i++)
-        {
-            System.out.println(suggestedStoresList.get(i).getStoreName());
-        }*/
         return storeSet;
     }
-
-    /*
-    @GetMapping("/AddStoreToSystem")
-    public String create(Model model, @ModelAttribute Store store) {
-        model.addAttribute("store", new Store());
-        return "AddStoreToSystem";
-    }
-    */
-    /*@CrossOrigin
-    @PostMapping("/AddStoreToSystem")
-    public boolean Add(@RequestBody Store store)
-    {
-        store.setStoreName(store.getStoreName().toLowerCase());
-        if(!storeRepo.existsById(store.getStoreName()))
-        {
-            storeRepo.save(store);
-            return true;
-        }
-        else
-        {
-            return false;
-        }
-    }*/
 }

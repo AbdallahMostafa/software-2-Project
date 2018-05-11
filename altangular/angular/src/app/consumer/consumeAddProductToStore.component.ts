@@ -14,7 +14,7 @@ import {LocalStorage, SessionStorage} from 'ngx-webstorage';
 import {ServiceShowStoresOfSystem} from '../service/serviceShowStoresOfSystem.component';
 @Component
 ({
-selector:'add-product',
+selector:'add-product-to-store',
 template:`
 <div class="container">
     <div class="form-group">
@@ -109,7 +109,8 @@ export class ConsumeAddProductToStore implements OnInit,ProductInstance, Product
     {
         this.user = this.storage.retrieve('reciveData');
         console.log(this.user);
-        this.serviceObject.send(this.productInstance, this.user, this.store).subscribe(
+        console.log(this.store);
+        this.serviceObject.send(this.product, this.user, this.store,this.productInstance).subscribe(
             value => {
               console.log('[POST] create Customer successfully', value);
             });

@@ -1,8 +1,6 @@
 package com.swproject.swiis.Entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
@@ -18,11 +16,11 @@ public class Product {
 
     private double productPriceMax,productPriceMin;
 
-    @ManyToOne(cascade = CascadeType.MERGE,fetch = FetchType.EAGER)
+    @ManyToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JoinColumn(name = "brand_id")
     Brand brand;
 
-    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "product",fetch = FetchType.EAGER)
     private Set<ProductInstance> productInstance;
 
     public Brand getBrand() {

@@ -21,9 +21,9 @@ template:`
   <script src="./app/JS/button.js"></script>
 <div class="container">
     <div *ngFor="let data of reciveData">
-        <p>{{data.product.productName}}</p>
-        <p>{{data.price}}</p>
-        <p>{{data.counter}}</p>
+        <p [(ngModel)]="data.product.productName" [ngModelOptions]="{standalone: true}" >{{data.product.productName}}</p>
+        <p [(ngModel)]="data.product.price" [ngModelOptions]="{standalone: true}" >{{data.price}}</p>
+        <p [(ngModel)]="data.counter" [ngModelOptions]="{standalone: true}" > {{data.counter}}</p>
         <div class="row" >
             <div class="col-lg-2">
                 <div class="input-group">
@@ -32,7 +32,7 @@ template:`
                             <span class="glyphicon glyphicon-minus"></span>
                         </button>
                     </span>
-                    <input type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
+                    <input [(ngModel)]="cart.boughtProducts" [ngModelOptions]="{standalone: true}" type="text" id="quantity" name="quantity" class="form-control input-number" value="1" min="1" max="100">
                     <span class="input-group-btn">
                         <button type="button" class="quantity-right-plus btn btn-success btn-number" data-type="plus" data-field="">
                             <span class="glyphicon glyphicon-plus"></span>
@@ -41,8 +41,8 @@ template:`
                 </div>
             </div>
         </div>
-        
     </div>
+    <button type = "button" class= "btn" type="submit" (click)="buy()" >Buy</button>
 </div>
 
 `,
@@ -92,7 +92,7 @@ export class ConsumeBuyProdcutFromStore implements OnInit , User, Product, Cart,
         this.Object.get_porducts(this.storeName).subscribe(data => {this.reciveData = data});
         console.log(this.reciveData);
     }
-    show_stores()
+    buy()
     {
         this.serviceObject.get(this.user,this.productInstance).subscribe(data =>{this.reciveData=data;});
     }

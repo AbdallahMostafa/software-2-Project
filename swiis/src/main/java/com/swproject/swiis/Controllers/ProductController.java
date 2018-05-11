@@ -16,11 +16,7 @@ public class ProductController {
     @Autowired
     ProductRepo productRepo;
 
-    /*@GetMapping("/AddProductToSystem")
-    public String create(Model model, @ModelAttribute Product product) {
-        model.addAttribute("product", new Product());
-        return "AddProductToSystem";
-    }*/
+    //--------------------Add Product To System---------------------
     @CrossOrigin
     @PostMapping("/AddProductToSystem")
     public boolean Add(@RequestBody Product product)
@@ -29,7 +25,6 @@ public class ProductController {
         if(!productRepo.existsById(product.getProductName()))
         {
             if(product.getProductType().equals("0")) {
-                product.setBrand(product.getBrand());
                 productRepo.save(product);
                 return true;
             }
@@ -39,6 +34,14 @@ public class ProductController {
             }
         }
         return false;
-
+    }
+    //--------------------------Buy Product------------------
+    @CrossOrigin
+    @PostMapping("/Buy")
+    public boolean BuyProductFromStore(@RequestBody RequestBodyObjects requestBodyObjects)
+    {
+        
+        return false;
     }
 }
+

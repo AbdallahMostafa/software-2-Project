@@ -6,6 +6,7 @@ import {Observable} from 'rxjs/Observable';
 import {Product} from '../interface/product';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import { HttpModule} from '@angular/http'; 
+import { Brand } from '../interface/brand';
 @Injectable()
 export class ServiceAddProductToSystem
 {

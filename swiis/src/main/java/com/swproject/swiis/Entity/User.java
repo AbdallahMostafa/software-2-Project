@@ -1,5 +1,9 @@
 package com.swproject.swiis.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -7,6 +11,10 @@ import java.util.Set;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @Table(name = "user")
+@JsonIdentityInfo(
+        scope = User.class,
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "userName")
 public class User
 {
     @Id

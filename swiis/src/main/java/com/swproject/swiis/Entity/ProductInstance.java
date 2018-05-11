@@ -1,13 +1,15 @@
 package com.swproject.swiis.Entity;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "productInstance")
+@JsonIdentityInfo(
+        scope = ProductInstance.class,
+        generator = ObjectIdGenerators.PropertyGenerator.class,
+        property = "id")
 public class ProductInstance {
 
     @Id
@@ -37,10 +39,6 @@ public class ProductInstance {
         this.quantity = quantity;
     }
 
-
-
-
-
     public void setId(long id) {
         this.id = id;
     }
@@ -51,13 +49,6 @@ public class ProductInstance {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public ProductInstance(double price, Product product, Store store, int counter) {
-        this.price = price;
-        this.product = product;
-        this.store = store;
-        this.counter = counter;
     }
 
     public int getCounter() {

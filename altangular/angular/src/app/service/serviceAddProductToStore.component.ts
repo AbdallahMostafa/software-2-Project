@@ -23,8 +23,8 @@ export class ServiceAddProductToStore
         let data=new URLSearchParams();
         return this._http.post("http://localhost:8080/ShowProduct",data).map(reault=>reault.json());
     }
-    send(productInstance : ProductInstance , user : User, store : Stores) : Observable <any>
+    send(product : Product , user : User, store : Stores,productInstance : ProductInstance) : Observable <any>
     {
-        return this.http.post("http://localhost:8080/AssignProductToStore",{productInstance, user, store} ,{headers : this.headers});
+        return this.http.post("http://localhost:8080/AssignProductToStore",{product, user, store, productInstance} ,{headers : this.headers});
     }
 }

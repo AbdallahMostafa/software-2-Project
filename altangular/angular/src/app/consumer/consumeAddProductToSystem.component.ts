@@ -7,7 +7,7 @@ import { Http ,HttpModule} from '@angular/http';
 import {Brand} from '../interface/brand';
 @Component
 ({
-selector:'add-product',
+selector:'add-product-to-system',
 template:`
 <div class="container">
     <div class="form-group">
@@ -24,7 +24,7 @@ template:`
             </p>
             <p>Brand : 
                 <select class="form-control" [(ngModel)]="brand.brandName" [ngModelOptions]="{standalone: true}" >
-                    <option *ngFor="let data of recivedData" value ="{{data.brandId}}">{{data.brandName}}</option>
+                    <option *ngFor="let data of recivedData" value ="{{data.brandName}}">{{data.brandName}}</option>
                 </select>
             </p>
             <p><input class="form-control" type="submit" value="Submit"/></p>
@@ -51,8 +51,8 @@ export class ConsumeAddProductToSystem implements OnInit, Brand, Product
     recivedData: any;
 
     ngOnInit() {
+        this.brand = {brandName : this.brandName, product: this.product, brandId : this.brandId};
         this.product = {productName : this.productName, productCategory : this.productCategory, productType : this.productType, brand : this.brand, productPriceMax : this.productPriceMax, productPriceMin : this.productPriceMin};
-        this.brand = {brandName : this.brandName, product: this.product, brandId : this.brandId}
     }
     constructor(private router: Router, private route: ActivatedRoute,private serviceObject:ServiceAddProductToSystem)
     {

@@ -39,6 +39,9 @@ public class StoreOwnerController {
     @Autowired
     UserRepo userRepo;
 
+    @Autowired
+    CartRepo cartRepo;
+
     private Set<Product> generateList(Iterable<Product> iterable)
     {
         Set<Product> products = new HashSet<Product>();
@@ -61,8 +64,13 @@ public class StoreOwnerController {
     @PostMapping("/AssignProductToStore")
     public  boolean AssignProductToStore(@RequestBody RequestBodyObjects requestBodyObjects)
     {
+        System.out.println(requestBodyObjects.getStore().getStoreName());
+        System.out.println(requestBodyObjects.getProduct().getProductName());
         if((storeRepo.existsById(requestBodyObjects.getStore().getStoreName())) && (!productInstanceRepo.existsById(requestBodyObjects.getProductInstance().getId())))
         {
+            requestBodyObjects.getProductInstance().setCart(null);
+            requestBodyObjects.getProductInstance().setProduct(requestBodyObjects.getProduct());
+            requestBodyObjects.getProductInstance().setStore(requestBodyObjects.getStore());
             productInstanceRepo.save(requestBodyObjects.getProductInstance());
             return true;
         }
@@ -115,6 +123,16 @@ class RequestBodyObjects
     private Brand brand;
 
     private String collaborator;
+
+    private int boughtProducts;
+
+    public int getBoughtProducts() {
+        return boughtProducts;
+    }
+
+    public void setBoughtProducts(int boughtProducts) {
+        this.boughtProducts = boughtProducts;
+    }
 
     public String getCollaborator() {
         return collaborator;
